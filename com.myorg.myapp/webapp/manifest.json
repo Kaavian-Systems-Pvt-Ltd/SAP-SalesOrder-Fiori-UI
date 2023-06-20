@@ -68,16 +68,31 @@
 			"routes": [
 				{
 					"pattern": "",
-					"name": "main",
-					"target": "main"
-				}
+					"controlId": "app",
+					"controlAggregation": "pages",
+					"name": "Main",
+					"view": "Main"
+				},
+				{
+					"pattern": "Register/{value}",
+					"controlId": "app",
+					"controlAggregation": "pages",
+					"name": "Register",
+					"view": "Register"
+				}  
 			],
-			"targets": {
-				"main": {
-					"viewId": "main",
-					"viewName": "Main"
-				}
+			"targets":{
+
+			"Main":{
+				"viewId": "main",
+				"viewName": "Main"
+			},
+			"Register":{
+				"viewId": "register",
+				"viewName": "Register"
 			}
+			}
+			
 		}
 	}
 }

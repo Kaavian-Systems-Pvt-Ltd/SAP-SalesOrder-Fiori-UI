@@ -5,21 +5,17 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	core:require="{
-		formatter: 'com/myorg/myapp/model/formatter'
-	}">
-
-	<MessagePage
-		title="{i18n>appTitle}"
-		text="{i18n>appTitle}"
-		icon="sap-icon://accept"
-		id="page"
-		description="{i18n>appDescription}">
-		<buttons>
-			<Button
-				id="helloButton"
-				text="{formatter: 'formatter.formatValue', path: 'i18n>btnText'}"
-				press="sayHello" />
-		</buttons>
-	</MessagePage>
-
-</mvc:View>
+		formatter: 'com/myorg/myapp/model/formatter'}">
+		<App>
+		<pages>
+		<Page title="Main page" class="titleHead">
+		<content>
+		<Button id="helloButton"
+				text="Go to Register page"
+				press="pageMove" />
+		</content>
+		</Page>
+		
+		</pages>
+		</App>
+	</mvc:View>

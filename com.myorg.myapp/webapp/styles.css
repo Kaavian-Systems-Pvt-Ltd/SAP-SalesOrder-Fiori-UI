@@ -1,0 +1,10 @@
+.titleHead{
+    text-align: center;
+    flex-grow: 1;
+}
+#page{
+    text-align: center;
+}
+.rolepick{
+    width: 200px;
+}
