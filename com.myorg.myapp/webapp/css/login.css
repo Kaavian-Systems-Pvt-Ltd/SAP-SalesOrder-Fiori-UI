@@ -1,0 +1,51 @@
+
+.MainContainer{
+    background-color: #f5f6f8 !important;
+}
+
+.loginTitle{
+    font-size: xx-large !important;
+    font-weight: 900 !important;
+}
+
+.useNameTag{
+    font-size: x-large !important;
+    font-weight: 700 !important;
+    
+}
+
+.passwordTag{
+    font-size: x-large !important;
+    font-weight: 700 !important;
+    margin: 5%;
+}
+
+.loginField{
+    margin: 5%;
+}
+
+.passwordFlex{
+    margin-left: 20px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right: 5%;
+}
+
+.userInputcustomStyle{
+    margin: 5%;
+}
+
+/* .Loginbtn {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    background-color: lightgreen !important;
+    font-size: larger !important;
+    font-weight: 600 !important;
+} */
+
+.mainFlex {
+    flex-direction: column;
+    background-color: red;
+}

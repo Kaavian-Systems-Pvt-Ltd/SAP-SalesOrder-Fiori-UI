@@ -1,0 +1,3 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.myorg.myapp.controller.HomePage">
+    <Text text="Home Page" xmlns="sap.m" id="text0"></Text>
+</mvc:View>
