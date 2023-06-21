@@ -1,0 +1,75 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    controllerName="com.myorg.myapp.controller.Homepage"
+    displayBlock="true"
+>
+    <Page>
+        <content>
+            <Text
+                xmlns="sap.m"
+                text="Welcome to the homepage user"
+                id="text2"
+            />
+
+            <Table
+                noDataText="Drop column list items here and columns in the area above"
+                id="table0"
+            >
+                <items>
+                    <ColumnListItem
+                        type="Active"
+                        id="item0"
+                    >
+                        <cells>
+                            <Text
+                                text="Row 1 Cell 1"
+                                id="text3"
+                            />
+
+                            <Text
+                                text="Row 1 Cell 2"
+                                id="text4"
+                            />
+
+                            <Text
+                                text="Row 1 Cell 3"
+                                id="text5"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+                <columns>
+                    <Column id="column0">
+                        <header>
+                            <Label
+                                text="Header 1"
+                                id="label0"
+                            />
+                        </header>
+                    </Column>
+
+                    <Column id="column1">
+                        <header>
+                            <Label
+                                text="Header 2"
+                                id="label1"
+                            />
+                        </header>
+                    </Column>
+
+                    <Column id="column2">
+                        <header>
+                            <Label
+                                text="Header 3"
+                                id="label2"
+                            />
+                        </header>
+                    </Column>
+                </columns>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

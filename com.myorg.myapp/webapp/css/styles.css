@@ -1,4 +1,4 @@
-.titleHead{
+.title{
     text-align: center;
     flex-grow: 1;
 }
@@ -7,4 +7,8 @@
 }
 .rolepick{
     width: 200px;
+}
+.submitButton{
+text-align: center;
+justify-content: center;
 }

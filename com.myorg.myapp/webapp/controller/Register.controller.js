@@ -1,30 +1,54 @@
-sap.ui.define(["./BaseController"], function (BaseController) {
+sap.ui.define(["./BaseController","sap/m/MessageBox"], function (BaseController,MessageBox) {
 	"use strict";
 
 	return BaseController.extend("com.myorg.myapp.controller.Register", {
-		onInit: function () {
-			
-		},
-        onSubmit : function () {
-    
-      //const role =this.getView().byId("select0").getValue();
-     // const username =this.getView().byId("input0").getValue();
-      //const password =this.getView().byId("input1").getValue();
+      onSubmit : function () {
 
-      var srole = this.byId("select0");
-      var role = srole.getSelectedKey();
+      const select=this.getView().byId("select0").getSelectedItem();
+      const username = this.getView().byId("input6").getValue();
+      const password = this.getView().byId("input5").getValue();
 
-      var username = this.byId("input0");
-      var Name = username.getValue();
-        
-      var secret = this.byId("input1");
-      var password = secret.getValue();
+      const role= select.getText();
+
+      console.log(username, password,role);
       
-      console.log(role,Name,password);
-      
-      srole.setSelectedkey("");
-      username.setValue("");
-      secret.setValue("");
+      //var oInput = sap.ui.getCore().getElementById('input6'); 
+      //oInput.setValue("");
+
+      //username.setValue("");
+      //password.setValue("");
+
+
+// Regular expression to validate the username and password
+var usernameRegex = /^[a-zA-Z]{3,15}$/;
+var passwordRegex = /^.{8,}$/;
+
+//var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+
+// Check if the username matches the regex pattern
+if (usernameRegex.test(username) && passwordRegex.test(password)) {
+  var oRouter=sap.ui.core.UIComponent.getRouterFor(this);
+				oRouter.navTo("Homepage");
+  
+} else {
+  
+  MessageBox.show("Username or Password  is invalid");
+}
+
+
+
+  //     fetch("https://server-mediating-quoll-ut.cfapps.us10-001.hana.ondemand.com/addData",{
+  //     method:"POST",
+  //     headers:{"content-type":"application/json"},
+  //     body:JSON.stringify({role,username,password}),
+
+  // }).then((res)=>res.json())
+  // .then(data=>{
+  //     console.log(data);
+  // });
+
     }
+
 	});
 });

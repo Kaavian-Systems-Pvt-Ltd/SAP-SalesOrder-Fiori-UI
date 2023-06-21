@@ -55,6 +55,13 @@
 				}
 			}
 		},
+		"resources": {
+			"css": [
+			  {
+				"uri": "css/styles.css"
+			  }
+			]
+		  },
 
 		"routing": {
 			"config": {
@@ -79,7 +86,14 @@
 					"controlAggregation": "pages",
 					"name": "Register",
 					"view": "Register"
-				}  
+				},
+				{
+					"pattern": "Homepage",
+					"controlId": "app",
+					"controlAggregation": "pages",
+					"name": "Homepage",
+					"view": "Homepage"
+				}    
 			],
 			"targets":{
 
@@ -90,6 +104,10 @@
 			"Register":{
 				"viewId": "register",
 				"viewName": "Register"
+			},
+			"Homepage":{
+				"viewId": "homepage",
+				"viewName": "Homepage"
 			}
 			}
 			
