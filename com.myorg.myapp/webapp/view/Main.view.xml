@@ -8,18 +8,7 @@
 		formatter: 'com/myorg/myapp/model/formatter'
 	}">
 
-	<MessagePage
-		title="{i18n>appTitle}"
-		text="{i18n>appTitle}"
-		icon="sap-icon://accept"
-		id="page"
-		description="{i18n>appDescription}">
-		<buttons>
-			<Button
-				id="helloButton"
-				text="{formatter: 'formatter.formatValue', path: 'i18n>btnText'}"
-				press="sayHello" />
-		</buttons>
-	</MessagePage>
+	<!-- <core:View viewName="com.myorg.myapp.view.login" /> -->
+	<core:ExtensionPoint name="com.myorg.myapp.Login.view"  />
 
 </mvc:View>
