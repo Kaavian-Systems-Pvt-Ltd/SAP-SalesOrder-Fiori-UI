@@ -4,7 +4,9 @@ sap.ui.define([
     "use strict";
     
     return Controller.extend("com.myorg.myapp.controller.HomePage", {
-      //Notbhing Here yet
+      homepagebtnHandel: function(){
+        this.getOwnerComponent().getRouter().navTo("createSales")
+      }
     });
   });
   

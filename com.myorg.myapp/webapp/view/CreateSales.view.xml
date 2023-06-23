@@ -1,0 +1,123 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="com.myorg.myapp.controller.CreateSales">
+    <!--<Text xmlns="sap.m" text="Create Page" id="text0"/> -->
+    <ScrollContainer id="scrollContainer" height="100%" width="100%" vertical="true" horizontal="false" focusable="true">
+        <mvc:XMLView viewName="com.myorg.myapp.view.Header"></mvc:XMLView>
+        <FlexBox alignItems="Center" justifyContent="Center" width="100%">
+            <sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form1">
+                <sap.ui.layout.form:formContainers>
+                    <sap.ui.layout.form:FormContainer title="Create Sales Order" id="container3">
+                        <sap.ui.layout.form:formElements>
+                            <sap.ui.layout.form:FormElement label="Sold to Party Name" id="element0">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input0"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="Sold to Party Address line 1" id="element1">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input1"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="Sold to Party Address line 2" id="element2">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input2"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="Sold to Party city" id="element3">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input3"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="Sold to Party State" id="element4">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input4"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="Sold to Party zip" id="element5">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input5"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="Ship to Party Name" id="element6">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input6"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="Ship to Party Address line 1" id="element7">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input7"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="Ship to Party Address line 2" id="element8">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input8"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                        </sap.ui.layout.form:formElements>
+                    </sap.ui.layout.form:FormContainer>
+                    </sap.ui.layout.form:formContainers>
+                    <sap.ui.layout.form:layout>
+                    <sap.ui.layout.form:ResponsiveGridLayout id="layout1"/>
+                </sap.ui.layout.form:layout>
+                </sap.ui.layout.form:Form>
+                <sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form2">
+                <sap.ui.layout.form:formContainers>
+                    <sap.ui.layout.form:FormContainer id="container4">
+                        <sap.ui.layout.form:formElements>
+                            <sap.ui.layout.form:FormElement label="Ship to Party city" id="element9">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input9"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="Ship to Party State" id="element10">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input10"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="Ship to Party zip" id="element11">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input11"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="CC Name" id="element12">
+                                <sap.ui.layout.form:fields>
+                                    <Input liveChange="onLiveChange" width="100%" id="input12"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="CC Number" id="element13">
+                                <sap.ui.layout.form:fields>
+                                    <Input liveChange="onLiveChange" width="100%" id="input13"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="CC Month" id="element14">
+                                <sap.ui.layout.form:fields>
+                                    <Input liveChange="onLiveChange" width="100%" id="input14"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="CC Year" id="element15">
+                                <sap.ui.layout.form:fields>
+                                    <Input liveChange="onLiveChange" width="100%" id="input15"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="CVV" id="element16">
+                                <sap.ui.layout.form:fields>
+                                    <Input liveChange="onLiveChange" width="100%" id="input16"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                            <sap.ui.layout.form:FormElement label="Sales Order Net Amount" id="element17">
+                                <sap.ui.layout.form:fields>
+                                    <Input required="true" width="100%" id="input17"/>
+                                </sap.ui.layout.form:fields>
+                            </sap.ui.layout.form:FormElement>
+                        </sap.ui.layout.form:formElements>
+                    </sap.ui.layout.form:FormContainer>
+                </sap.ui.layout.form:formContainers>
+                <sap.ui.layout.form:layout>
+                    <sap.ui.layout.form:ResponsiveGridLayout id="layout2"/>
+                </sap.ui.layout.form:layout>
+            </sap.ui.layout.form:Form>
+        </FlexBox>
+        <FlexBox width="100%" height="100%" justifyContent="Center">
+            <Button press="handlePressCreate" xmlns="sap.m" text="Create Order" id="button1"/>
+        </FlexBox>
+    </ScrollContainer>
+</mvc:View>
