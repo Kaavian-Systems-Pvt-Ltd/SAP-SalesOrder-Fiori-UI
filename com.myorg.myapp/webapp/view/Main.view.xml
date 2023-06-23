@@ -6,16 +6,7 @@
 	xmlns:core="sap.ui.core"
 	core:require="{
 		formatter: 'com/myorg/myapp/model/formatter'}">
-		<App>
-		<pages>
-		<Page title="Main page" class="titleHead">
-		<content>
-		<Button id="helloButton"
-				text="Go to Register page"
-				press="pageMove" />
-		</content>
-		</Page>
-		
-		</pages>
-		</App>
+	<Button text="Login" press="pageNavigate"></Button>
+	<Button text="Register" press="pageMove"></Button>
+	<Button text="Homepage" press="navigate"></Button>
 	</mvc:View>

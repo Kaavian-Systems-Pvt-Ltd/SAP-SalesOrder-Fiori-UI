@@ -2,10 +2,13 @@
         
 
         <VBox width="100%" height="100%" justifyContent="Center" alignItems="Center" direction="Column" id="vbox0">
-        <!-- <FlexBox width="100%" height="100%" justifyContent="Center" alignItems="Center"> </FlexBox> -->
-        
-        <FlexBox width="100%" height="100%" justifyContent="Center" alignItems="Center" id="box0">
-            <sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form0">
+
+    
+        <items>
+
+    
+            <FlexBox xmlns="sap.m" width="100%" height="100%" justifyContent="Center" alignItems="Center" id="box0">
+            <sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" width="100%" editable="true" id="form0">
                 <sap.ui.layout.form:formContainers>
                     <sap.ui.layout.form:FormContainer title="Registration details entry" id="container5">
                         <sap.ui.layout.form:formElements>
@@ -16,21 +19,28 @@
                             </sap.ui.layout.form:FormElement>
 
                             <sap.ui.layout.form:FormElement label="Password" id="element5">
+
                                 <sap.ui.layout.form:fields>
-                                    <Input type="Password" width="100%" id="input5" placeholder="Type the password"/>
+                                
+                                <Input type="Password" width="100%" id="input5" placeholder="Type the password">
+                                </Input>
+
+                                <!-- <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://show" press="iconPress" size="1rem" id="icon0" color="black" width="10%" hoverColor="grey"/> -->
+
+
                                 </sap.ui.layout.form:fields>
                             </sap.ui.layout.form:FormElement>
 
                             <sap.ui.layout.form:FormElement label="Role" id="element7">
                                 <Select xmlns="sap.m" id="select0" width="100%">
                                     <items>
-                                        <core:Item xmlns:core="sap.ui.core" key="0" text="Select a role" id="item0"/>
+                                        <core:Item xmlns:core="sap.ui.core" key="Select a role" text="Select a role" id="item0"/>
 
-                                        <core:Item xmlns:core="sap.ui.core" key="USER" text="User" id="item1"/>
-                                        <core:Item xmlns:core="sap.ui.core" key="MANAGER" text="Manager" id="item2"/>
+                                        <core:Item xmlns:core="sap.ui.core" key="USER" text="USER" id="item1"/>
+                                        <core:Item xmlns:core="sap.ui.core" key="MANAGER" text="MANAGER" id="item2"/>
                                     </items>
                                 </Select>
-                                <FlexBox justifyContent="Center" alignItems="Center" >
+                                <FlexBox justifyContent="Center" alignItems="Center">
                                 <Button xmlns="sap.m" text="Submit" class="submitButton" press="onSubmit" width="100%" id="button0"/>
                                 </FlexBox>
                             </sap.ui.layout.form:FormElement>
@@ -44,7 +54,23 @@
             </sap.ui.layout.form:Form>
             
             
+            
+        <items>
+            
+            
+            
+            
+            
+            
+            
+            
+        </items>
+            
+            
         </FlexBox>
+
+    
+        </items>
 
     
         </VBox>

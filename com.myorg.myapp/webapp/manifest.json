@@ -75,22 +75,21 @@
 			"routes": [
 				{
 					"pattern": "",
-					"controlId": "app",
-					"controlAggregation": "pages",
 					"name": "Main",
 					"view": "Main"
 				},
 				{
-					"pattern": "Register/{value}",
-					"controlId": "app",
-					"controlAggregation": "pages",
+					"pattern": "login",
+					"name": "login",
+					"target": "login"
+				},
+				{
+					"pattern": "Register",
 					"name": "Register",
 					"view": "Register"
 				},
 				{
-					"pattern": "Homepage",
-					"controlId": "app",
-					"controlAggregation": "pages",
+					"pattern": "HomePage",
 					"name": "Homepage",
 					"view": "Homepage"
 				}    
@@ -101,16 +100,22 @@
 				"viewId": "main",
 				"viewName": "Main"
 			},
-			"Register":{
+			"login": {
+				"viewId": "login",
+				"viewName": "Login"
+		
+			},
+			"register":{
 				"viewId": "register",
 				"viewName": "Register"
 			},
-			"Homepage":{
+			"homepage":{
 				"viewId": "homepage",
 				"viewName": "Homepage"
 			}
-			}
+		}
+		}
 			
 		}
 	}
-}
+

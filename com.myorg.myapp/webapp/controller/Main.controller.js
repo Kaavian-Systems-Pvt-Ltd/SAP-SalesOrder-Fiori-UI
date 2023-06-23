@@ -1,11 +1,15 @@
-sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (BaseController, MessageBox) {
+sap.ui.define(["./BaseController"], function (BaseController) {
 	"use strict";
 
 	return BaseController.extend("com.myorg.myapp.controller.Main", {
+		pageNavigate: function(){
+            this.getOwnerComponent().getRouter().navTo("login");
+        },
 		pageMove: function () {
-			let word="HelloWorld";
-			var oRouter=sap.ui.core.UIComponent.getRouterFor(this);
-				oRouter.navTo("Register",{value:word});
+			this.getOwnerComponent().getRouter().navTo("Register");
+		},
+		navigate: function(){
+			this.getOwnerComponent().getRouter().navTo("Homepage");
 		}
 	});
 });

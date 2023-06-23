@@ -1,0 +1,40 @@
+<mvc:View xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.myorg.myapp.controller.Login">
+<VBox class="MainContainer" width="100%" height="100%" alignItems="Center" justifyContent="Center">
+<FlexBox alignItems="Center" justifyContent="Center">
+    <Text xmlns="sap.m" class="loginTitle" text="LOGIN"/>
+</FlexBox>
+<FlexBox class="loginField">
+<form:Form width="100%" editable="true" id="form0">
+    <form:formContainers>
+        <form:FormContainer id="container2">
+            <form:formElements>
+                <form:FormElement label="User Name" id="element2">
+                    <form:fields>
+                        <FlexBox alignItems="Center" justifyContent="Center" class="userInputcustomStyle">
+                            <core:Icon src="sap-icon://person-placeholder" size="1rem" color="black"/>
+                            <Input width="100%" id="input5"/>
+                        </FlexBox>
+                    </form:fields>
+                </form:FormElement>
+                <form:FormElement label="Password" id="element0">
+                    <form:fields>
+                        <FlexBox class="passwordFlex" alignItems="Center" justifyContent="Center">
+                            <core:Icon class="paswordInputCustomStyle" src="sap-icon://locked" size="1rem" color="black"/>
+                            <Input class="paswordInputCustomStyle" type="Password" width="100%" id="input6"/>
+                            <core:Icon class="paswordInputCustomStyle" id="passwordIconId" press="handelPasswordIconPress" src="sap-icon://show" size="1rem" color="black"/>
+                        </FlexBox>
+                    </form:fields>
+                </form:FormElement>
+            </form:formElements>
+        </form:FormContainer>
+    </form:formContainers>
+    <form:layout>
+        <form:ResponsiveGridLayout id="layout0"/>
+    </form:layout></form:Form>
+<items/>
+</FlexBox>
+<FlexBox alignItems="Center" justifyContent="Center" backgroundDesign="Solid">
+    <Button xmlns="sap.m" class="Loginbtn" press="handelLoginPress" text="Login" id="button0"/>
+</FlexBox>
+</VBox>
+</mvc:View>
