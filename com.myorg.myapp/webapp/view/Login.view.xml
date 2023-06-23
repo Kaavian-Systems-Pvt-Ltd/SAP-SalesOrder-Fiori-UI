@@ -33,8 +33,14 @@
     </form:layout></form:Form>
 <items/>
 </FlexBox>
-<FlexBox alignItems="Center" justifyContent="Center" backgroundDesign="Solid">
+<FlexBox alignItems="Center" justifyContent="Center">
     <Button xmlns="sap.m" class="Loginbtn" press="handelLoginPress" text="Login" id="button0"/>
+</FlexBox>
+<FlexBox width="100%" id="box5" alignItems="Center" justifyContent="Center">
+    <items>
+        <Text xmlns="sap.m" text="New User ?" id="text4" textAlign="Center"/>
+        <Button class="regNavButton" xmlns="sap.m" press="NavToRegPage" text="Click Here" id="button0_1687495430763"/>
+    </items>
 </FlexBox>
 </VBox>
 </mvc:View>

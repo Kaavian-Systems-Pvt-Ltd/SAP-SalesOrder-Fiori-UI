@@ -92,30 +92,34 @@
 					"pattern": "HomePage",
 					"name": "Homepage",
 					"view": "Homepage"
+				},
+				{
+					"pattern": "createSales",
+					"name": "createSales",
+					"target": "createSales"
 				}    
 			],
-			"targets":{
-
-			"Main":{
-				"viewId": "main",
-				"viewName": "Main"
-			},
-			"login": {
-				"viewId": "login",
-				"viewName": "Login"
-		
-			},
-			"register":{
-				"viewId": "register",
-				"viewName": "Register"
-			},
-			"homepage":{
-				"viewId": "homepage",
-				"viewName": "Homepage"
+			"targets": {
+				"main": {
+					"viewId": "main",
+					"viewName": "Main"
+				},
+				"login": {
+					"viewId": "login",
+					"viewName": "Login"
+				},
+				"home": {
+					"viewId": "home",
+					"viewName": "HomePage"
+				},
+				"createSales": {
+					"viewId": "createSales",
+					"viewName": "CreateSales"
+				}
 			}
 		}
 		}
 			
 		}
-	}
+	
 
