@@ -1,3 +1,5 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.myorg.myapp.controller.HomePage">
+    <mvc:XMLView viewName="com.myorg.myapp.view.Header"></mvc:XMLView>
     <Text text="Home Page" xmlns="sap.m" id="text0"></Text>
+    <Button press="homepagebtnHandel" text="update page"></Button>
 </mvc:View>

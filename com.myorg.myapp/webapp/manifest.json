@@ -80,6 +80,11 @@
 					"pattern": "home",
 					"name": "home",
 					"target":"home"
+				},
+				{
+					"pattern": "createSales",
+					"name": "createSales",
+					"target": "createSales"
 				}
 			],
 			"targets": {
@@ -94,6 +99,10 @@
 				"home": {
 					"viewId": "home",
 					"viewName": "HomePage"
+				},
+				"createSales": {
+					"viewId": "createSales",
+					"viewName": "CreateSales"
 				}
 			}
 		}

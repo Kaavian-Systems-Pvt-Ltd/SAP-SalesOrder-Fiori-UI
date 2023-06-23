@@ -35,17 +35,26 @@
     margin: 5%;
 }
 
-/* .Loginbtn {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    padding-top: 8px !important;
-    padding-bottom: 8px !important;
-    background-color: lightgreen !important;
-    font-size: larger !important;
-    font-weight: 600 !important;
-} */
+.header{
+    background-color: black !important;
+}
+
+.middlelink{
+    color: white !important;
+    font-size: 30px !important;
+    text-decoration: none !important;
+}
+
+.logoutBtn{
+    color: white !important;
+}
 
 .mainFlex {
     flex-direction: column;
     background-color: red;
+}
+
+.regNavButton{
+    border-width: 0px !important;
+    color: blue !important;
 }
