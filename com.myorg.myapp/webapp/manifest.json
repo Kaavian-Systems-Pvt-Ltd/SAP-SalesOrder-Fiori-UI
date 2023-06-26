@@ -84,20 +84,25 @@
 					"target": "login"
 				},
 				{
-					"pattern": "Register",
-					"name": "Register",
-					"view": "Register"
+					"pattern": "userRegisterPage",
+					"name": "userRegisterPage",
+					"view": "userRegisterPage"
 				},
 				{
-					"pattern": "HomePage",
-					"name": "Homepage",
-					"view": "Homepage"
+					"pattern": "home",
+					"name": "home",
+					"view": "home"
 				},
 				{
 					"pattern": "createSales",
 					"name": "createSales",
 					"target": "createSales"
-				}    
+				},
+				{
+					"pattern": "updateSales",
+					"name": "updateSales",
+					"target": "updateSales"
+				}
 			],
 			"targets": {
 				"main": {
@@ -115,6 +120,14 @@
 				"createSales": {
 					"viewId": "createSales",
 					"viewName": "CreateSales"
+				},
+				"updateSales": {
+					"viewId": "updateSales",
+					"viewName": "UpdateSales"
+				},
+				"userRegisterPage": {
+					"viewId": "userRegisterPage",
+					"viewName": "userRegisterPage"
 				}
 			}
 		}

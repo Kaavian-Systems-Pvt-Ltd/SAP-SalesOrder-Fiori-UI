@@ -8,5 +8,5 @@
 		formatter: 'com/myorg/myapp/model/formatter'}">
 	<Button text="Login" press="pageNavigate"></Button>
 	<Button text="Register" press="pageMove"></Button>
-	<Button text="Homepage" press="navigate"></Button>
+	<Button text="Homepage" press="home"></Button>
 	</mvc:View>

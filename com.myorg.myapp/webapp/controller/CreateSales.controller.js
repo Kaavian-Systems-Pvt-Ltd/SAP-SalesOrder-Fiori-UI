@@ -367,24 +367,26 @@ sap.ui.define([
               })
 
             // if credit card validation failed
-            }else if(RegexCheck.RegexForSoldToPartyName().Success === true &&
-            RegexCheck.RegexForSoldToPartyAddressLine1Input().Success === true &&
-            RegexCheck.RegexForSoldToPartyAddressLine2Input().Success === true &&
-            RegexCheck.RegexForSoldToPartyCityInput().Success === true &&
-            RegexCheck.RegexForSoldToPartyStateInput().Success === true &&
-            RegexCheck.RegexForSoldToPartyZipInput().Success === true &&
-            RegexCheck.RegexForShipToPartyNameInput().Success === true &&
-            RegexCheck.RegexForShipToPartyAddressLine1Input().Success === true &&
-            RegexCheck.RegexForShipToPartyAddressLine2Input().Success === true &&
-            RegexCheck.RegexForShipToPartyCityInput().Success === true &&
-            RegexCheck.RegexForShipToPartyStateInput().Success === true &&
-            RegexCheck.RegexForShiptoPartyzipInput().Success === true &&
-            RegexCheck.RegexForSalesOrderNetAmountInput().Success === true &&
-            valid === false
-            ){
-              MessageBox.alert("Only master card or visa or American express are currenty accepted")
-              // if every any regex failed
-            }else {
+            }
+            // else if(RegexCheck.RegexForSoldToPartyName().Success === true &&
+            // RegexCheck.RegexForSoldToPartyAddressLine1Input().Success === true &&
+            // RegexCheck.RegexForSoldToPartyAddressLine2Input().Success === true &&
+            // RegexCheck.RegexForSoldToPartyCityInput().Success === true &&
+            // RegexCheck.RegexForSoldToPartyStateInput().Success === true &&
+            // RegexCheck.RegexForSoldToPartyZipInput().Success === true &&
+            // RegexCheck.RegexForShipToPartyNameInput().Success === true &&
+            // RegexCheck.RegexForShipToPartyAddressLine1Input().Success === true &&
+            // RegexCheck.RegexForShipToPartyAddressLine2Input().Success === true &&
+            // RegexCheck.RegexForShipToPartyCityInput().Success === true &&
+            // RegexCheck.RegexForShipToPartyStateInput().Success === true &&
+            // RegexCheck.RegexForShiptoPartyzipInput().Success === true &&
+            // RegexCheck.RegexForSalesOrderNetAmountInput().Success === true
+            // // valid === false
+            // ){
+            //   MessageBox.alert("Only master card or visa or American express are currenty accepted")
+            //   // if every any regex failed
+            // }
+            else {
               MessageBox.alert("Missing Required input")
             }
         }catch(err){

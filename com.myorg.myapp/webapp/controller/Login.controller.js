@@ -16,14 +16,14 @@ sap.ui.define([
       }
     }
 
-    // Password Regex Check
-    const passwordCheck = ()=> {
-      if(/^(?=.*[A-Z])(?!.*\s).{8,16}$/.test(password)){
-        return { 'Status' : true }
-      }else{
-        return { 'Status' : false }
+      // Password Regex Check
+      const passwordCheck = ()=> {
+        if(password.length >= 8 ){
+          return { 'Status' : true }
+        }else{
+          return { 'Status' : false }
+        }
       }
-    }
 
     return { userNameCheck, passwordCheck }
 }
@@ -40,20 +40,21 @@ sap.ui.define([
 
         const regexResult = LoginRegexCheck(userName, password);
 
-        if( regexResult.userNameCheck().Status === true && regexResult.passwordCheck().Status === true  ){
-          fetch(`https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/login`, {
-            method: 'POST',
-            body: JSON.stringify({ userName, password }),
-            headers: { 'content-type': 'application/json' }
-          })
-          .then(res=> res.json())
-          .then((data)=> {
-            console.log(data, 'login fetch res');
-            if(data.status === Success){
+          if( regexResult.userNameCheck().Status === true && regexResult.passwordCheck().Status === true  ){
+            // this.getOwnerComponent().getRouter().navTo("home")
+            fetch(`https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/login`, {
+              method: 'POST',
+              body: JSON.stringify({ userName, userPassword: password }),
+              headers: { 'content-type': 'application/json' }
+            })
+            .then(res=> res.json())
+            .then((data)=> {
+              console.log(data, 'login fetch res');
+              window.localStorage.setItem("token", data.token)
+              window.localStorage.setItem("tokenData", data);
               this.getOwnerComponent().getRouter().navTo("home")
-            }
-          })
-        }else if(regexResult.userNameCheck().Status === false && regexResult.passwordCheck().Status === false){
+            })
+          }else if(regexResult.userNameCheck().Status === false && regexResult.passwordCheck().Status === false){
 
           MessageBox.alert("Both user Name and Password is not Valid")
 
@@ -87,7 +88,11 @@ sap.ui.define([
         btn.setSrc("sap-icon://show");
       }
 
-    }
+      },
+
+      NavToRegPage: function(){
+        this.getOwnerComponent().getRouter().navTo("userRegisterPage");
+      }
 
   });
 });

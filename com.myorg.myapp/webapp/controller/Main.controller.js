@@ -6,10 +6,10 @@ sap.ui.define(["./BaseController"], function (BaseController) {
             this.getOwnerComponent().getRouter().navTo("login");
         },
 		pageMove: function () {
-			this.getOwnerComponent().getRouter().navTo("Register");
+			this.getOwnerComponent().getRouter().navTo("userRegisterPage");
 		},
-		navigate: function(){
-			this.getOwnerComponent().getRouter().navTo("Homepage");
+		home: function(){
+			this.getOwnerComponent().getRouter().navTo("home")
 		}
 	});
 });

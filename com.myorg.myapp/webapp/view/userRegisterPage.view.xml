@@ -1,12 +1,6 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="com.myorg.myapp.controller.Register" displayBlock="true">
-        
-
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="com.myorg.myapp.controller.userRegisterPage" displayBlock="true">
         <VBox width="100%" height="100%" justifyContent="Center" alignItems="Center" direction="Column" id="vbox0">
-
-    
         <items>
-
-    
             <FlexBox xmlns="sap.m" width="100%" height="100%" justifyContent="Center" alignItems="Center" id="box0">
             <sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" width="100%" editable="true" id="form0">
                 <sap.ui.layout.form:formContainers>
@@ -17,25 +11,16 @@
                                     <Input width="100%" id="input6" placeholder="Type the userName"/>
                                 </sap.ui.layout.form:fields>
                             </sap.ui.layout.form:FormElement>
-
                             <sap.ui.layout.form:FormElement label="Password" id="element5">
-
-                                <sap.ui.layout.form:fields>
-                                
+                                <sap.ui.layout.form:fields>                        
                                 <Input type="Password" width="100%" id="input5" placeholder="Type the password">
                                 </Input>
-
-                                <!-- <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://show" press="iconPress" size="1rem" id="icon0" color="black" width="10%" hoverColor="grey"/> -->
-
-
                                 </sap.ui.layout.form:fields>
                             </sap.ui.layout.form:FormElement>
-
                             <sap.ui.layout.form:FormElement label="Role" id="element7">
                                 <Select xmlns="sap.m" id="select0" width="100%">
                                     <items>
                                         <core:Item xmlns:core="sap.ui.core" key="Select a role" text="Select a role" id="item0"/>
-
                                         <core:Item xmlns:core="sap.ui.core" key="USER" text="USER" id="item1"/>
                                         <core:Item xmlns:core="sap.ui.core" key="MANAGER" text="MANAGER" id="item2"/>
                                     </items>
@@ -47,32 +32,13 @@
                         </sap.ui.layout.form:formElements>
                     </sap.ui.layout.form:FormContainer>
                 </sap.ui.layout.form:formContainers>
-
                 <sap.ui.layout.form:layout>
                     <sap.ui.layout.form:ResponsiveGridLayout id="layout0"/>
                 </sap.ui.layout.form:layout>
-            </sap.ui.layout.form:Form>
-            
-            
-            
-        <items>
-            
-            
-            
-            
-            
-            
-            
-            
+            </sap.ui.layout.form:Form>          
+        <items>            
         </items>
-            
-            
         </FlexBox>
-
-    
         </items>
-
-    
         </VBox>
-    
 </mvc:View>
