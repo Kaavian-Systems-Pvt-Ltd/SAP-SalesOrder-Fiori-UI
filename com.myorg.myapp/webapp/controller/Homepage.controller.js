@@ -9,10 +9,10 @@ sap.ui.define([
   
   return Controller.extend("com.myorg.myapp.controller.HomePage", {
 
-    onInit: function(){
+    onInit:async function(){
       const userId=2;
       console.log(token);
-      fetch("https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/user/home", {
+       await fetch("https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/user/home",{
         method: "POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({token}),
@@ -46,8 +46,19 @@ sap.ui.define([
           console.error("Error fetching data:", error);
         });
     },
-    handleFilter: function(){
 
+    handleFilter: async function(){
+      
+      const orderId=this.getView().byId("field0").getValue();
+      const searchTerm=orderId;
+      await fetch("https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/searchSalesOrder",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({ searchTerm })
+      }).then(res=>res.json())
+      .then((data)=>{
+        console.log(data)
+      })
     }
 
 

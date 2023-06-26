@@ -7,7 +7,7 @@
                     <sap.ui.layout.form:formElements>
                         <sap.ui.layout.form:FormElement   id="element5">
                             <sap.ui.layout.form:fields>
-                            <FlexBox width="100%" justifyContent="SpaceBetween" id="box0">
+                            <FlexBox width="100%" justifyContent="SpaceAround" id="box0">
                             <SearchField xmlns="sap.m" placeholder="Search by orderId..." id="field0" search="handleFilter" width="100%"/>
                                 <Button text="Create sales Order" width="100%" press="salesCreate"></Button>
                             </FlexBox>
