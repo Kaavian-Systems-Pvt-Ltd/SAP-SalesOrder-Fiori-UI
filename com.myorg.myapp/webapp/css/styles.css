@@ -1,0 +1,14 @@
+.title{
+    text-align: center;
+    flex-grow: 1;
+}
+#page{
+    text-align: center;
+}
+.rolepick{
+    width: 200px;
+}
+.submitButton{
+text-align: center;
+justify-content: center;
+}

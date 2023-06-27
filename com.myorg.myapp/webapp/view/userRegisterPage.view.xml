@@ -1,4 +1,4 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="com.myorg.myapp.controller.Register" displayBlock="true">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="com.myorg.myapp.controller.userRegisterPage" displayBlock="true">
         <VBox width="100%" height="100%" justifyContent="Center" alignItems="Center" direction="Column" id="vbox0">
         <items>
             <FlexBox xmlns="sap.m" width="100%" height="100%" justifyContent="Center" alignItems="Center" id="box0">

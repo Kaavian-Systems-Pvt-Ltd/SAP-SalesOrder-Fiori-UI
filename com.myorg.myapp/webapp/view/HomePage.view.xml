@@ -1,16 +1,17 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="com.myorg.myapp.controller.HomePage" displayBlock="true">
     <mvc:XMLView viewName="com.myorg.myapp.view.Header"></mvc:XMLView>
-    <Page>
-    <content>
+
+        <ScrollContainer id="scrollContainer" height="100%" width="100%" vertical="true" horizontal="false" focusable="true">
         <VBox width="100%" direction="Column" id="vbox1">
         <sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form0">
             <sap.ui.layout.form:formContainers><sap.ui.layout.form:FormContainer title="Sales Order details" id="container5">
                     <sap.ui.layout.form:formElements>
                         <sap.ui.layout.form:FormElement id="element5">
                             <sap.ui.layout.form:fields>
-                            <FlexBox width="100%" justifyContent="SpaceBetween" id="box0">
-                            <SearchField xmlns="sap.m" placeholder="Search by orderId..." id="field0" search="handleFilter" width="100%"/>
-                                <Button text="Create sales Order" width="100%" press="salesCreate"/>
+                            <FlexBox width="100%" justifyContent="End" id="box0">
+                            <SearchField xmlns="sap.m" placeholder="Search by orderId..." id="field0" search="handleFilter" liveChange=".onSearchFieldLiveChange" width="100%"/>
+                            <Button xmlns="sap.m" text="Create sales Order"  width="100%" press="salesCreate"  id="button0"/>  
+
                             </FlexBox>                   
                             </sap.ui.layout.form:fields>
                         </sap.ui.layout.form:FormElement>
@@ -20,36 +21,54 @@
             <sap.ui.layout.form:layout>
                 <sap.ui.layout.form:ResponsiveGridLayout id="layout0"/>
             </sap.ui.layout.form:layout></sap.ui.layout.form:Form>
-        <Table noDataText="Drop column list items here and columns in the area above" id="table0">
-            <items>
-            </items>
-            <columns>      
-                <Column id="column1">
+
+                <Table noDataText="No data available please Enter correct order Id" id="table0">
+            <columns>  
+            <Column id="column0">
                     <header>
-                        <Label text="Order No" id="label1"/>
+                        <Label text="S.No" id="label0"/>
                     </header>
                 </Column>
+                <Column id="column1">
+                    <header>
+                        <Label text="userId" id="label1"/>
+                    </header>
+                </Column> 
                 <Column id="column2">
                     <header>
-                        <Label text="Date" id="label2"/>
+                        <Label text="Order Id" id="label2"/>
                     </header>
                 </Column>
                 <Column id="column3">
-                <Label text="Sold to" id="label3"/>
+                    <header>
+                        <Label text="Date" id="label3"/>
+                    </header>
                 </Column>
                 <Column id="column4">
-                <Label text="Name" id="label4"/>
+                <Label text="Sold to" id="label4"/>
                 </Column>
                 <Column id="column5">
-                <Label text="Sales Amount" id="label5"/>
+                <Label text="Name" id="label5"/>
                 </Column>
                 <Column id="column6">
-                <Label text="Edit" id="label6"/>
+                <Label text="Sales Amount" id="label6"/>
+                </Column>
+                <Column id="column7">
+                    <header>
+                        <Label text="CC Number" id="label7"/>
+                    </header>
+                </Column>
+                <Column id="column8">
+                    <header>
+                        <Label text="Billing Block" id="label8"/>
+                    </header>
+                </Column>
+                <Column id="column9">
+                <Label text="Edit" id="label9"/>
                 </Column>
                 </columns></Table>
-        <items>
-        </items>
+        
         </VBox>
-    </content>
-    </Page>
+        </ScrollContainer>
+
 </mvc:View>
