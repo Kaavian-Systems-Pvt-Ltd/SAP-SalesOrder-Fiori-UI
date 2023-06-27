@@ -1,6 +1,7 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-  ], function(Controller) {
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageBox"
+  ], function(Controller, MessageBox) {
     "use strict";
 
   // luln metheod to check the credit card by their bumber
@@ -58,26 +59,28 @@ sap.ui.define([
 
     let valid = false;
 
-    let salesOrderNo;
-    let soldToPartyName;
-    let soldToPartyAdress1;
-    let soldToPartyAdress2;
-    let soldToPartyCity;
-    let soldToPartyState;
-    let soldToPartyZip;
-    let shipToPartyName;
-    let shipToPartyAddress1;
-    let shipToPartyAddress2;
-    let shipToPartyCity;
-    let shipToPartyState;
-    let shipToPartyZip;
-    let CCName;
-    let CCMonth;
-    let CCYear;
-    let CCV;
-    let salesOrderNetAmount;
-    let billingBlockAmount;
-    let CCNumber;
+    let salesorderno;
+    let soldtopartyname;
+    let soldtopartyadress1;
+    let soldtopartyadress2;
+    let soldtopartycity;
+    let soldtopartystate;
+    let soldtopartyzip;
+    let shiptopartyname;
+    let shiptopartyaddress1;
+    let shiptopartyaddress2;
+    let shiptopartycity;
+    let shiptopartystate;
+    let shiptopartyzip;
+    let ccname;
+    let ccmonth;
+    let ccyear;
+    let cvv;
+    let salesordernetamount;
+    let billingblockamount;
+    let ccnumber;
+    let token;
+    let billingAmountBlock;
     
     return Controller.extend("com.myorg.myapp.controller.UpdateSales", {
 
@@ -85,6 +88,7 @@ sap.ui.define([
 
         const orderID = window.localStorage.getItem("orderID");
         const getToken = window.localStorage.getItem("tokenData");
+        token = window.localStorage.getItem("token");
 
         await fetch('https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/getSalesOrderDetails', {
           method: 'POST',
@@ -93,72 +97,157 @@ sap.ui.define([
         })
         .then(res => res.json())
         .then((userData)=> {
-          salesOrderNo = userData.salesOrderDetails[0].SALES_ORDER_NO;
-          soldToPartyName = userData.salesOrderDetails[0].SOLD_TO_PARTY_NAME;
-          soldToPartyAdress1 = userData.salesOrderDetails[0].SOLD_TO_PARTY_ADDRESS1;
-          soldToPartyAdress2 = userData.salesOrderDetails[0].SOLD_TO_PARTY_ADDRESS2;
-          soldToPartyCity = userData.salesOrderDetails[0].SOLD_TO_PARTY_CITY;
-          soldToPartyState = userData.salesOrderDetails[0].SOLD_TO_PARTY_STATE;
-          soldToPartyZip = userData.salesOrderDetails[0].SOLD_TO_PARTY_ZIP;
-          shipToPartyName = userData.salesOrderDetails[0].SHIP_TO_PARTY_NAME;
-          shipToPartyAddress1 = userData.salesOrderDetails[0].SHIP_TO_PARTY_ADDRESS1;
-          shipToPartyAddress2 = userData.salesOrderDetails[0].SHIP_TO_PARTY_ADDRESS2;
-          shipToPartyCity = userData.salesOrderDetails[0].SHIP_TO_PARTY_CITY;
-          shipToPartyState = userData.salesOrderDetails[0].SHIP_TO_PARTY_STATE;
-          shipToPartyZip = userData.salesOrderDetails[0].SHIP_TO_PARTY_ZIP;
-          CCName = userData.salesOrderDetails[0].CC_NAME;
-          CCNumber = userData.salesOrderDetails[0].CC_NUMBER;
-          CCMonth = userData.salesOrderDetails[0].CC_MONTH;
-          CCYear = userData.salesOrderDetails[0].CC_YEAR;
-          CCV = userData.salesOrderDetails[0].CVV;
-          salesOrderNetAmount = userData.salesOrderDetails[0].SALES_ORDER_NET_AMOUNT;
-          billingBlockAmount = userData.salesOrderDetails[0].BILLING_BLOCK_AMOUNT;
+          salesorderno = userData.salesOrderDetails[0].SALES_ORDER_NO;
+          soldtopartyname = userData.salesOrderDetails[0].SOLD_TO_PARTY_NAME;
+          soldtopartyadress1 = userData.salesOrderDetails[0].SOLD_TO_PARTY_ADDRESS1;
+          soldtopartyadress2 = userData.salesOrderDetails[0].SOLD_TO_PARTY_ADDRESS2;
+          soldtopartycity = userData.salesOrderDetails[0].SOLD_TO_PARTY_CITY;
+          soldtopartystate = userData.salesOrderDetails[0].SOLD_TO_PARTY_STATE;
+          soldtopartyzip = userData.salesOrderDetails[0].SOLD_TO_PARTY_ZIP;
+          shiptopartyname = userData.salesOrderDetails[0].SHIP_TO_PARTY_NAME;
+          shiptopartyaddress1 = userData.salesOrderDetails[0].SHIP_TO_PARTY_ADDRESS1;
+          shiptopartyaddress2 = userData.salesOrderDetails[0].SHIP_TO_PARTY_ADDRESS2;
+          shiptopartycity = userData.salesOrderDetails[0].SHIP_TO_PARTY_CITY;
+          shiptopartystate = userData.salesOrderDetails[0].SHIP_TO_PARTY_STATE;
+          shiptopartyzip = userData.salesOrderDetails[0].SHIP_TO_PARTY_ZIP;
+          ccname = userData.salesOrderDetails[0].CC_NAME;
+          ccnumber = userData.salesOrderDetails[0].CC_NUMBER;
+          ccmonth = userData.salesOrderDetails[0].CC_MONTH;
+          ccyear = userData.salesOrderDetails[0].CC_YEAR;
+          cvv = userData.salesOrderDetails[0].CVV;
+          salesordernetamount = userData.salesOrderDetails[0].SALES_ORDER_NET_AMOUNT;
+          billingblockamount = true;
         })
 
         const orderNo = this.getView().byId("input0")
-        orderNo.setValue(salesOrderNo)
+        orderNo.setValue(salesorderno)
         const soldPartyName = this.getView().byId("input1")
-        soldPartyName.setValue(soldToPartyName);
+        soldPartyName.setValue(soldtopartyname);
         const soldPartyAdress1 = this.getView().byId("input2")
-        soldPartyAdress1.setValue(soldToPartyAdress1)
+        soldPartyAdress1.setValue(soldtopartyadress1)
         const soldPartyAdress2 = this.getView().byId("input3")
-        soldPartyAdress2.setValue(soldToPartyAdress2)
+        soldPartyAdress2.setValue(soldtopartyadress2)
         const soldPartyCity = this.getView().byId("input4")
-        soldPartyCity.setValue(soldToPartyCity)
+        soldPartyCity.setValue(soldtopartycity)
         const soldPartyState = this.getView().byId("input5")
-        soldPartyState.setValue(soldToPartyState)
+        soldPartyState.setValue(soldtopartystate)
         const soldPartyZip = this.getView().byId("input6")
-        soldPartyZip.setValue(soldToPartyZip)
+        soldPartyZip.setValue(soldtopartyzip)
         const shipPartyName = this.getView().byId("input7")
-        shipPartyName.setValue(shipToPartyName)
+        shipPartyName.setValue(shiptopartyname)
         const shipPartyAddress1 = this.getView().byId("input8")
-        shipPartyAddress1.setValue(shipToPartyAddress1)
+        shipPartyAddress1.setValue(shiptopartyaddress1)
         const shipPartyAddress2 = this.getView().byId("input9")
-        shipPartyAddress2.setValue(shipToPartyAddress2)
+        shipPartyAddress2.setValue(shiptopartyaddress2)
         const shipPartyCity = this.getView().byId("input10")
-        shipPartyCity.setValue(shipToPartyCity)
+        shipPartyCity.setValue(shiptopartycity)
         const shipPartyState = this.getView().byId("input11")
-        shipPartyState.setValue(shipToPartyState)
+        shipPartyState.setValue(shiptopartystate)
         const shipPartyZip = this.getView().byId("input12")
-        shipPartyZip.setValue(shipToPartyZip)
+        shipPartyZip.setValue(shiptopartyzip)
         const ccName = this.getView().byId("input13")
-        ccName.setValue(CCName)
+        ccName.setValue(ccname)
         const ccNumber = this.getView().byId("input14")
-        ccNumber.setValue(CCNumber)
+        ccNumber.setValue(ccnumber)
         const ccMonth = this.getView().byId("input15")
-        ccMonth.setValue(CCMonth)
+        ccMonth.setValue(ccmonth)
         const ccYear = this.getView().byId("input16")
-        ccYear.setValue(CCYear)
-        const ccv = this.getView().byId("input17")
-        ccv.setValue(CCV)
+        ccYear.setValue(ccyear)
+        const CVV = this.getView().byId("input17")
+        CVV.setValue(cvv)
         const salesOrderNetAmountInput = this.getView().byId("input18")
-        salesOrderNetAmountInput.setValue(salesOrderNetAmount)
-        const billingBlockAmountInput = this.getView().byId("input19")
-        billingBlockAmountInput.setValue(billingBlockAmount)
+        salesOrderNetAmountInput.setValue(salesordernetamount)
+        const billingBlockAmountInput = this.getView().byId("box2")
+        billingBlockAmountInput.setSelected(billingblockamount)
 
         console.log(getToken);
-        console.log(getToken.role);
-        console.log(getToken[0].role);
+
+        if(getToken === "MANAGER"){
+          
+        const orderNo = this.getView().byId("input0")
+        orderNo.setEditable(false)
+        const soldPartyName = this.getView().byId("input1")
+        soldPartyName.setEditable(false)
+        const soldPartyAdress1 = this.getView().byId("input2")
+        soldPartyAdress1.setEditable(false)
+        const soldPartyAdress2 = this.getView().byId("input3")
+        soldPartyAdress2.setEditable(false)
+        const soldPartyCity = this.getView().byId("input4")
+        soldPartyCity.setEditable(false)
+        const soldPartyState = this.getView().byId("input5")
+        soldPartyState.setEditable(false)
+        const soldPartyZip = this.getView().byId("input6")
+        soldPartyZip.setEditable(false)
+        const shipPartyName = this.getView().byId("input7")
+        shipPartyName.setEditable(false)
+        const shipPartyAddress1 = this.getView().byId("input8")
+        shipPartyAddress1.setEditable(false)
+        const shipPartyAddress2 = this.getView().byId("input9")
+        shipPartyAddress2.setEditable(false)
+        const shipPartyCity = this.getView().byId("input10")
+        shipPartyCity.setEditable(false)
+        const shipPartyState = this.getView().byId("input11")
+        shipPartyState.setEditable(false)
+        const shipPartyZip = this.getView().byId("input12")
+        shipPartyZip.setEditable(false)
+        const ccName = this.getView().byId("input13")
+        ccName.setEditable(false)
+        const ccNumber = this.getView().byId("input14")
+        ccNumber.setEditable(false)
+        const ccMonth = this.getView().byId("input15")
+        ccMonth.setEditable(false)
+        const ccYear = this.getView().byId("input16")
+        ccYear.setEditable(false)
+        const cvv = this.getView().byId("input17")
+        cvv.setEditable(false)
+        const salesOrderNetAmountInput = this.getView().byId("input18")
+        salesOrderNetAmountInput.setEditable(false)
+        const billingBlockAmountInput = this.getView().byId("box2")
+        billingBlockAmountInput.setEnabled(true)
+
+        }else if(getToken === "USER"){
+
+        const orderNo = this.getView().byId("input0")
+        orderNo.setEditable(false)
+        const soldPartyName = this.getView().byId("input1")
+        soldPartyName.setEditable(false)
+        const soldPartyAdress1 = this.getView().byId("input2")
+        soldPartyAdress1.setEditable(true)
+        const soldPartyAdress2 = this.getView().byId("input3")
+        soldPartyAdress2.setEditable(true)
+        const soldPartyCity = this.getView().byId("input4")
+        soldPartyCity.setEditable(true)
+        const soldPartyState = this.getView().byId("input5")
+        soldPartyState.setEditable(true)
+        const soldPartyZip = this.getView().byId("input6")
+        soldPartyZip.setEditable(true)
+        const shipPartyName = this.getView().byId("input7")
+        shipPartyName.setEditable(false)
+        const shipPartyAddress1 = this.getView().byId("input8")
+        shipPartyAddress1.setEditable(true)
+        const shipPartyAddress2 = this.getView().byId("input9")
+        shipPartyAddress2.setEditable(true)
+        const shipPartyCity = this.getView().byId("input10")
+        shipPartyCity.setEditable(true)
+        const shipPartyState = this.getView().byId("input11")
+        shipPartyState.setEditable(true)
+        const shipPartyZip = this.getView().byId("input12")
+        shipPartyZip.setEditable(true)
+        const ccName = this.getView().byId("input13")
+        ccName.setEditable(true)
+        const ccNumber = this.getView().byId("input14")
+        ccNumber.setEditable(true)
+        const ccMonth = this.getView().byId("input15")
+        ccMonth.setEditable(true)
+        const ccYear = this.getView().byId("input16")
+        ccYear.setEditable(true)
+        const cvv = this.getView().byId("input17")
+        cvv.setEditable(true)
+        const salesOrderNetAmountInput = this.getView().byId("input18")
+        salesOrderNetAmountInput.setEditable(false)
+        const billingBlockAmountInput = this.getView().byId("box2")
+        billingBlockAmountInput.setEnabled(false)
+        }
       },
 
       onLiveUpdate: function(){
@@ -169,21 +258,76 @@ sap.ui.define([
       },
 
       handlePressCreate: function(){
-        const soldPartyAdress1Input = this.getView().byId("input2")
-        const soldPartyAdress2Input = this.getView().byId("input3")
-        const soldPartyCityInput = this.getView().byId("input4")
-        const soldPartyStateInput = this.getView().byId("input5")
-        const soldPartyZipInput = this.getView().byId("input6")
-        const shipPartyAddress1Input = this.getView().byId("input8")
-        const shipPartyAddress2Input = this.getView().byId("input9")
-        const shipPartyCityInput = this.getView().byId("input10")
-        const shipPartyStateInput = this.getView().byId("input11")
-        const shipPartyZipInput = this.getView().byId("input12")
-        const ccName = this.getView().byId("input13")
-        const ccNumber = this.getView().byId("input14")
-        const ccMonth = this.getView().byId("input15")
-        const ccYear = this.getView().byId("input16")
-        const ccv = this.getView().byId("input17")
+        const salesOrderNo = parseInt(this.getView().byId("input0").getValue(), 10)
+        const soldPartyName = this.getView().byId("input1").getValue()
+        const soldPartyAdress1Input = this.getView().byId("input2").getValue()
+        const soldPartyAdress2Input = this.getView().byId("input3").getValue()
+        const soldPartyCityInput = this.getView().byId("input4").getValue()
+        const soldPartyStateInput = this.getView().byId("input5").getValue()
+        const soldPartyZipInput = parseInt(this.getView().byId("input6").getValue(), 10)
+        const shipPartyName = this.getView().byId("input7").getValue()
+        const shipPartyAddress1Input = this.getView().byId("input8").getValue()
+        const shipPartyAddress2Input = this.getView().byId("input9").getValue()
+        const shipPartyCityInput = this.getView().byId("input10").getValue()
+        const shipPartyStateInput = this.getView().byId("input11").getValue()
+        const shipPartyZipInput = parseInt(this.getView().byId("input12").getValue(), 10)
+        const ccName = this.getView().byId("input13").getValue()
+        const ccNumber = parseInt(this.getView().byId("input14").getValue(), 10)
+        const ccMonth = this.getView().byId("input15").getValue()
+        const ccYear = this.getView().byId("input16").getValue()
+        const cvv = parseInt(this.getView().byId("input17").getValue(), 10)
+        const salesOrderNetAmountUpdate = parseInt(this.getView().byId("input18").getValue(), 10)
+        const billingBlockAmountUpdate = this.getView().byId("box2")
+        const isChecked = billingBlockAmountUpdate.getSelected();
+
+        if(isChecked === true){
+          billingAmountBlock = "Y"
+        }else{
+          billingAmountBlock = "N"
+        }
+
+        console.log(billingAmountBlock, 'billingAmountBlock');
+
+
+        fetch("https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/updateSalesOrder", {
+          method: 'POST',
+          body: JSON.stringify({
+            token,
+            salesOrderNo,
+            soldPartyName,
+            soldPartyAddress1: soldPartyAdress1Input,
+            soldPartyAddress2: soldPartyAdress2Input,
+            soldPartyCity: soldPartyCityInput,
+            soldPartyState: soldPartyStateInput,
+            soldPartyZip: soldPartyZipInput,
+            shipPartyName,
+            shipPartyAddress1: shipPartyAddress1Input,
+            shipPartyAddress2: shipPartyAddress2Input,
+            shipPartyCity: shipPartyCityInput,
+            shipPartyState: shipPartyStateInput,
+            shipPartyZip: shipPartyZipInput,
+            ccName,
+            ccMonth,
+            ccNumber,
+            CCyear: ccYear,
+            cvv,
+            salesOrderNetAmount: salesOrderNetAmountUpdate,
+            billingAmountBlock
+          }),
+          headers: { 'content-type': 'application/json' }
+        })
+        .then(res=> res.json())
+        .then((data)=> {
+          console.log(data);
+          try{
+            MessageBox.alert(data.message)
+            if(data.message){
+              this.getOwnerComponent().getRouter().navTo("home")
+            }
+          }catch(err){
+            console.log(err.message);
+          }
+        })
       }
     });
   });
