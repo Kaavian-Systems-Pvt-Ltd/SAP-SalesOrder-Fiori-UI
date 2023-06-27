@@ -1,138 +1,128 @@
 {
-	"_version": "1.12.0",
+    "_version": "1.12.0",
 
-	"sap.app": {
-		"id": "com.myorg.myapp",
-		"type": "application",
-		"i18n": "i18n/i18n.properties",
-		"title": "{{appTitle}}",
-		"description": "{{appDescription}}",
-		"applicationVersion": {
-			"version": "1.0.0"
-		}
-	},
+    "sap.app": {
+        "id": "com.myorg.myapp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        }
+    },
 
-	"sap.ui": {
-		"technology": "UI5",
-		"icons": {},
-		"deviceTypes": {
-			"desktop": true,
-			"tablet": true,
-			"phone": true
-		}
-	},
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {},
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
 
-	"sap.ui5": {
-		"rootView": {
-			"viewName": "com.myorg.myapp.view.App",
-			"type": "XML",
-			"async": true,
-			"id": "app"
-		},
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "com.myorg.myapp.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
 
-		"dependencies": {
-			"minUI5Version": "1.113.0",
-			"libs": {
-				"sap.ui.core": {},
-				"sap.ui.layout": {},
-				"sap.ui.unified": {},
-				"sap.m": {}
-			}
-		},
+        "dependencies": {
+            "minUI5Version": "1.113.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.ui.layout": {},
+                "sap.ui.unified": {},
+                "sap.m": {}
+            }
+        },
 
-		"handleValidation": true,
+        "handleValidation": true,
 
-		"contentDensities": {
-			"compact": true,
-			"cozy": true
-		},
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
 
-		"models": {
-			"i18n": {
-				"type": "sap.ui.model.resource.ResourceModel",
-				"settings": {
-					"bundleName": "com.myorg.myapp.i18n.i18n"
-				}
-			}
-		},
-		"resources": {
-			"css": [
-			  {
-				"uri": "css/styles.css"
-			  }
-			]
-		  },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.myorg.myapp.i18n.i18n"
+                }
+            }
+        },
 
-		"routing": {
-			"config": {
-				"routerClass": "sap.m.routing.Router",
-				"viewType": "XML",
-				"viewPath": "com.myorg.myapp.view",
-				"controlId": "app",
-				"controlAggregation": "pages",
-				"async": true
-			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "Main",
-					"view": "Main"
-				},
-				{
-					"pattern": "login",
-					"name": "login",
-					"target": "login"
-				},
-				{
-					"pattern": "userRegisterPage",
-					"name": "userRegisterPage",
-					"view": "userRegisterPage"
-				},
-				{
-					"pattern": "HomePage",
-					"name": "HomePage",
-					"view": "HomePage"
-				},
-				{
-					"pattern": "createSales",
-					"name": "createSales",
-					"target": "createSales"
-				},
-				{
-					"pattern": "updateSales",
-					"name": "updateSales",
-					"target": "updateSales"
-				}
-			],
-			"targets": {
-				"main": {
-					"viewId": "main",
-					"viewName": "Main"
-				},
-				"login": {
-					"viewId": "login",
-					"viewName": "Login"
-				},
-				"HomePage": {
-					"viewId": "HomePage",
-					"viewName": "HomePage"
-				},
-				"createSales": {
-					"viewId": "createSales",
-					"viewName": "CreateSales"
-				},
-				"updateSales": {
-					"viewId": "updateSales",
-					"viewName": "UpdateSales"
-				},
-				"userRegisterPage": {
-					"viewId": "userRegisterPage",
-					"viewName": "userRegisterPage"
-				}
-			}
-		}
-		}
-			
-		}
-	
-
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "com.myorg.myapp.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "main",
+                    "target": "main"
+                },
+                {
+                    "pattern": "login",
+                    "name": "login",
+                    "target": "login"
+                },
+                {
+                    "pattern": "home",
+                    "name": "home",
+                    "target":"home"
+                },
+                {
+                    "pattern": "createSales",
+                    "name": "createSales",
+                    "target": "createSales"
+                },
+                {
+                    "pattern": "updateSales",
+                    "name": "updateSales",
+                    "target": "updateSales"
+                },
+                {
+                    "pattern": "Register",
+                    "name": "Register",
+                    "target": "Register"
+                }
+            ],
+            "targets": {
+                "main": {
+                    "viewId": "main",
+                    "viewName": "Main"
+                },
+                "login": {
+                    "viewId": "login",
+                    "viewName": "Login"
+                },
+                "home": {
+                    "viewId": "home",
+                    "viewName": "HomePage"
+                },
+                "createSales": {
+                    "viewId": "createSales",
+                    "viewName": "CreateSales"
+                },
+                "updateSales": {
+                    "viewId": "updateSales",
+                    "viewName": "UpdateSales"
+                },
+                "Register": {
+                    "viewId": "Register",
+                    "viewName": "Register"
+                }
+            }
+        }
+    }
+}

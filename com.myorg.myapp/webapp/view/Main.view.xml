@@ -6,7 +6,5 @@
 	xmlns:core="sap.ui.core"
 	core:require="{
 		formatter: 'com/myorg/myapp/model/formatter'}">
-	<Button text="Login" press="pageNavigate"></Button>
-	<Button text="Register" press="pageMove"></Button>
-	<Button text="Homepage" press="movehome"></Button>
+
 	</mvc:View>

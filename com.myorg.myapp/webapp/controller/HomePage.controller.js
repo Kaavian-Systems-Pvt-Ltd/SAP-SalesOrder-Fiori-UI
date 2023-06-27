@@ -8,7 +8,7 @@ sap.ui.define([
   "use strict";
   
   return Controller.extend("com.myorg.myapp.controller.HomePage", {
-
+    
 
     onInit: function(){
       
@@ -168,7 +168,13 @@ sap.ui.define([
             table.addItem(row);
           })
           }else{
-            this.onInit();
+            
+            const table = this.getView().byId("table0");
+
+            const row = new Text({text:""});
+            
+            table.removeAllItems();
+            table.addItem(row);
           }
           });
     },
@@ -181,6 +187,9 @@ sap.ui.define([
     
     onClear: function() {
       // or additional functionality when the X icon is clicked
+      const table = this.getView().byId("table0");
+
+      table.removeAllItems();
       this.onInit();
     },
     
