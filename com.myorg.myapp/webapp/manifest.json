@@ -89,9 +89,9 @@
 					"view": "userRegisterPage"
 				},
 				{
-					"pattern": "home",
-					"name": "home",
-					"view": "home"
+					"pattern": "HomePage",
+					"name": "HomePage",
+					"view": "HomePage"
 				},
 				{
 					"pattern": "createSales",
@@ -113,8 +113,8 @@
 					"viewId": "login",
 					"viewName": "Login"
 				},
-				"home": {
-					"viewId": "home",
+				"HomePage": {
+					"viewId": "HomePage",
 					"viewName": "HomePage"
 				},
 				"createSales": {

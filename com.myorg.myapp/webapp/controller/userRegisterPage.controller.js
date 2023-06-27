@@ -2,22 +2,9 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (BaseController
     "use strict";
   
     return BaseController.extend("com.myorg.myapp.controller.userRegisterPage", {
+      
       onInit: function () {
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJSb2xlIjoiVVNFUiIsImlhdCI6MTY4NzM0NzEwNH0.-1-RbsdtWzVHbY9oo8yrBtl2elVPKejpEhSFbkxZFwc";
-  
-        try {
-          fetch('https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/user/home', {
-            method: 'POST',
-            body: JSON.stringify({ token }),
-            headers: { 'content-type': 'application/json' }
-          })
-            .then(res => res.json())
-            .then((data) => {
-              console.log(data);
-            })
-        } catch (error) {
-          console.log(error.message);
-        }
+
       },
   
       iconPress: function () {
@@ -50,10 +37,9 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (BaseController
         if (usernameRegex.test(userName) && passwordRegex.test(userPassword)&& (userRole==="USER"||userRole==="MANAGER")){
           console.log(userName, userPassword, userRole);
   
-          this.getView().byId("select0").setValue("");
+          this.getView().byId("select0").setValue("Select a role");
           this.getView().byId("input6").setValue("");
           this.getView().byId("input5").setValue("");
-  
           fetch("https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/register", {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -62,9 +48,11 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (BaseController
           }).then((res) => res.json())
             .then(data => {
               console.log(data);
+              console.log(data.message);          
+            MessageBox.show(data.message);
             });
-            MessageBox.show("Username and password is correct");
-          this.getOwnerComponent().getRouter().navTo("home");
+            
+          this.getOwnerComponent().getRouter().navTo("login");
   
         } else if(!usernameRegex.test(userName)) {
   
@@ -77,6 +65,7 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (BaseController
 
           MessageBox.alert("Please fill all fields");
         }
+        
       }
     });
   });
