@@ -1,7 +1,10 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageBox"
-  ], function(Controller, MessageBox) {
+    "sap/m/MessageBox",
+    "sap/m/Dialog",
+    "sap/m/Button",
+    "sap/m/Text"
+  ], function(Controller, MessageBox, Dialog, Button, Text) {
     "use strict";
 
     // token
@@ -364,19 +367,50 @@ sap.ui.define([
               })
               .then(res => res.json())
               .then((data)=> {
-                try{
-                  MessageBox.alert(data.createdSalesOrder.message)
+                const that = this;
 
-                  if(data.createdSalesOrder.statusCode === 200){
-                    this.getOwnerComponent().getRouter().navTo("home")
-                  }
-                }catch(err){
-                  console.log(err.message);
+                if(data.createdSalesOrder.statusCode === 200){
+                  const dialog = new Dialog({
+                    title: 'Success',
+                    type: 'Message',
+                    content: new Text({
+                      text: data.createdSalesOrder.message
+                    }),
+                    beginButton: new Button({
+                      text: 'Ok',
+                      press: function() {
+                        dialog.close();
+                        that.getOwnerComponent().getRouter().navTo("home")
+                      }
+                    }),
+                    afterClose: function(){
+                      dialog.destroy();
+                    }
+                  })
+                  dialog.open();
+                }else {
+                  const dialog = new Dialog({
+                    title: 'Failed',
+                    type: 'Message',
+                    content: new Text({
+                      text: data.createdSalesOrder.message
+                    }),
+                    beginButton: new Button({
+                      text: 'Ok',
+                      press: function() {
+                        dialog.close();
+                      }
+                    }),
+                    afterClose: function(){
+                      dialog.destroy();
+                    }
+                  })
+                  dialog.open();
                 }
               })
 
-            // if credit card validation failed
             }
+            // if credit card field is not filled
             else if(RegexCheck.RegexForSoldToPartyName().Success === true &&
             RegexCheck.RegexForSoldToPartyAddressLine1Input().Success === true &&
             RegexCheck.RegexForSoldToPartyAddressLine2Input().Success === true &&
@@ -393,7 +427,7 @@ sap.ui.define([
             CCNameInput === "" && CCNumberInput === "" && CCMonthInputInput === "" && 
             CCYearInput === "" && CVVInput === ""
             ){
-              // MessageBox.alert("Only master card or visa or American express are currenty accepted")
+
               fetch('https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/user/createSalesOrder', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -422,14 +456,46 @@ sap.ui.define([
               .then(res => res.json())
               .then((data)=>{
                 console.log(data);
-                try{
-                  MessageBox.alert(data.createdSalesOrder.message)
 
-                  if(data.createdSalesOrder.statusCode === 200){
-                    this.getOwnerComponent().getRouter().navTo("home")
-                  }
-                }catch(err){
-                  console.log(err.message);
+                const that = this;
+
+                if(data.createdSalesOrder.statusCode === 200){
+                  const dialog = new Dialog({
+                    title: 'Success',
+                    type: 'Message',
+                    content: new Text({
+                      text: data.createdSalesOrder.message
+                    }),
+                    beginButton: new Button({
+                      text: 'Ok',
+                      press: function() {
+                        dialog.close();
+                        that.getOwnerComponent().getRouter().navTo("home")
+                      }
+                    }),
+                    afterClose: function(){
+                      dialog.destroy();
+                    }
+                  })
+                  dialog.open();
+                }else {
+                  const dialog = new Dialog({
+                    title: 'Failed',
+                    type: 'Message',
+                    content: new Text({
+                      text: data.createdSalesOrder.message
+                    }),
+                    beginButton: new Button({
+                      text: 'Ok',
+                      press: function() {
+                        dialog.close();
+                      }
+                    }),
+                    afterClose: function(){
+                      dialog.destroy();
+                    }
+                  })
+                  dialog.open();
                 }
               })
             }
