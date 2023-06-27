@@ -142,7 +142,6 @@ sap.ui.define([
         console.log(data)
         const searchTableData = data.SearchData;
         console.log(searchTableData);
-
           if(searchTableData){
           const table = this.getView().byId("table0");
          
@@ -170,11 +169,8 @@ sap.ui.define([
           }else{
             
             const table = this.getView().byId("table0");
-
-            const row = new Text({text:""});
             
             table.removeAllItems();
-            table.addItem(row);
           }
           });
     },
