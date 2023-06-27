@@ -128,7 +128,7 @@ sap.ui.define([
       }
 
       const RegexForCCMonthInput = ()=> {
-        if(/^(?=.*[0-9])\d+$/.test(CCMonthInputInput)){
+        if(/^[a-zA-Z.]+$/.test(CCMonthInputInput)){
           return { 'Success' : true }
         }else {
           return { 'Success' : false }
@@ -303,6 +303,9 @@ sap.ui.define([
           const CCYearInput = this.getView().byId("input15").getValue();
           const CVVInput = this.getView().byId("input16").getValue();
           const salesOrderNetAmountInput = this.getView().byId("input17").getValue();
+
+          console.log(CCNameInput, CCNumberInput, 'lol');
+          console.log(typeof(CCNameInput, CCNumberInput, CCMonthInputInput, CCYearInput, CVVInput));
   
           // send data to do regex
           const RegexCheck = CreateSalesRegexCheck(
@@ -361,13 +364,20 @@ sap.ui.define([
               })
               .then(res => res.json())
               .then((data)=> {
-                if(data.createdSalesOrder.statusCode === 200){
-                  MessageBox.alert("Success")
+                try{
+                  MessageBox.alert(data.createdSalesOrder.message)
+
+                  if(data.createdSalesOrder.statusCode === 200){
+                    this.getOwnerComponent().getRouter().navTo("home")
+                  }
+                }catch(err){
+                  console.log(err.message);
                 }
               })
 
             // if credit card validation failed
-            }else if(RegexCheck.RegexForSoldToPartyName().Success === true &&
+            }
+            else if(RegexCheck.RegexForSoldToPartyName().Success === true &&
             RegexCheck.RegexForSoldToPartyAddressLine1Input().Success === true &&
             RegexCheck.RegexForSoldToPartyAddressLine2Input().Success === true &&
             RegexCheck.RegexForSoldToPartyCityInput().Success === true &&
@@ -380,11 +390,50 @@ sap.ui.define([
             RegexCheck.RegexForShipToPartyStateInput().Success === true &&
             RegexCheck.RegexForShiptoPartyzipInput().Success === true &&
             RegexCheck.RegexForSalesOrderNetAmountInput().Success === true &&
-            valid === false
+            CCNameInput === "" && CCNumberInput === "" && CCMonthInputInput === "" && 
+            CCYearInput === "" && CVVInput === ""
             ){
-              MessageBox.alert("Only master card or visa or American express are currenty accepted")
-              // if every any regex failed
-            }else {
+              // MessageBox.alert("Only master card or visa or American express are currenty accepted")
+              fetch('https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/user/createSalesOrder', {
+                method: 'POST',
+                body: JSON.stringify({
+                  soldPartyName: soldtToPartyNameInput,
+                  soldPartyAddress1: soldToPartyAddressLine1Input,
+                  soldPartyAddress2: soldToPartyAddressLine2Input,
+                  soldPartyCity: soldToPartyCityInput,
+                  soldPartyState: soldToPartyStateInput,
+                  soldPartyZip: soldToPartyZipInput,
+                  shipPartyName: shipToPartyNameInput,
+                  shipPartyAddress1: shipToPartyAddressLine1Input,
+                  shipPartyAddress2: shipToPartyAddressLine2Input,
+                  shipPartyCity: shipToPartyCityInput,
+                  shipPartyState: shipToPartyStateInput,
+                  shipPartyZip: shiptoPartyzipInput,
+                  ccName: null,
+                  ccNumber: null,
+                  ccMonth: null,
+                  CCyear: null,
+                  cvv: null,
+                  salesOrderNetAmount: salesOrderNetAmountInput,
+                  token
+                }),
+                headers: { 'content-type': 'application/json' }
+              })
+              .then(res => res.json())
+              .then((data)=>{
+                console.log(data);
+                try{
+                  MessageBox.alert(data.createdSalesOrder.message)
+
+                  if(data.createdSalesOrder.statusCode === 200){
+                    this.getOwnerComponent().getRouter().navTo("home")
+                  }
+                }catch(err){
+                  console.log(err.message);
+                }
+              })
+            }
+            else {
               MessageBox.alert("Missing Required input")
             }
         }catch(err){

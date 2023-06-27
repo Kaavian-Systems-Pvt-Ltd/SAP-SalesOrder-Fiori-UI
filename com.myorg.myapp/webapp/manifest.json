@@ -85,6 +85,16 @@
 					"pattern": "createSales",
 					"name": "createSales",
 					"target": "createSales"
+				},
+				{
+					"pattern": "updateSales",
+					"name": "updateSales",
+					"target": "updateSales"
+				},
+				{
+					"pattern": "Register",
+					"name": "Register",
+					"target": "Register"
 				}
 			],
 			"targets": {
@@ -103,6 +113,14 @@
 				"createSales": {
 					"viewId": "createSales",
 					"viewName": "CreateSales"
+				},
+				"updateSales": {
+					"viewId": "updateSales",
+					"viewName": "UpdateSales"
+				},
+				"Register": {
+					"viewId": "Register",
+					"viewName": "Register"
 				}
 			}
 		}

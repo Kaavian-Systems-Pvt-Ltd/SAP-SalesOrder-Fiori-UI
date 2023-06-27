@@ -20,6 +20,7 @@ sap.ui.define([
             text: "OK",
             press: function() {
               dialog.close();
+              window.localStorage.clear();
               that.getOwnerComponent().getRouter().navTo("login")
             }
           }),
