@@ -5,15 +5,16 @@
 
         <VBox width="100%" direction="Column" id="vbox1">
         <sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form0">
-            <sap.ui.layout.form:formContainers><sap.ui.layout.form:FormContainer title="Sales Order details" id="container5">
+            <sap.ui.layout.form:formContainers><sap.ui.layout.form:FormContainer id="container5">
                     <sap.ui.layout.form:formElements>
                         <sap.ui.layout.form:FormElement id="element5">
                             <sap.ui.layout.form:fields>
-                            <FlexBox width="100%" justifyContent="SpaceAround" id="box0">
+
+                            <FlexBox width="100%" justifyContent="End" id="box0">
                             <SearchField xmlns="sap.m" placeholder="Search by orderId..." id="field0" search="handleFilter" liveChange=".onSearchFieldLiveChange" width="100%"/>
                             <Button xmlns="sap.m" text="Create sales Order"  width="100%" press="salesCreate"  id="button0"/>  
+                            </FlexBox> 
 
-                            </FlexBox>                   
                             </sap.ui.layout.form:fields>
                         </sap.ui.layout.form:FormElement>
                     </sap.ui.layout.form:formElements>

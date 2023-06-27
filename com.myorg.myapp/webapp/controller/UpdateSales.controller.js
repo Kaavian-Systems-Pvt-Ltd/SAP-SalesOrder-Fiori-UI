@@ -1,7 +1,10 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageBox"
-  ], function(Controller, MessageBox) {
+    "sap/m/MessageBox",
+    "sap/m/Dialog",
+    "sap/m/Button",
+    "sap/m/Text"
+  ], function(Controller, MessageBox, Dialog, Button, Text) {
     "use strict";
 
   // luln metheod to check the credit card by their bumber
@@ -57,6 +60,7 @@ sap.ui.define([
     return false;
   }
 
+  // declaring global variables
     let valid = false;
 
     let salesorderno;
@@ -84,8 +88,10 @@ sap.ui.define([
     
     return Controller.extend("com.myorg.myapp.controller.UpdateSales", {
 
+      // when opened this function is rendered first
       onInit: async function(){
 
+        // getting token and role from local storage
         const orderID = window.localStorage.getItem("orderID");
         const getToken = window.localStorage.getItem("tokenData");
         token = window.localStorage.getItem("token");
@@ -97,6 +103,7 @@ sap.ui.define([
         })
         .then(res => res.json())
         .then((userData)=> {
+          // getting field value from back end
           salesorderno = userData.salesOrderDetails[0].SALES_ORDER_NO;
           soldtopartyname = userData.salesOrderDetails[0].SOLD_TO_PARTY_NAME;
           soldtopartyadress1 = userData.salesOrderDetails[0].SOLD_TO_PARTY_ADDRESS1;
@@ -119,6 +126,7 @@ sap.ui.define([
           billingblockamount = true;
         })
 
+        // setting field value
         const orderNo = this.getView().byId("input0")
         orderNo.setValue(salesorderno)
         const soldPartyName = this.getView().byId("input1")
@@ -162,8 +170,11 @@ sap.ui.define([
 
         console.log(getToken);
 
+        // setting diff editable option to manager and user
+
+        // if manager
         if(getToken === "MANAGER"){
-          
+
         const orderNo = this.getView().byId("input0")
         orderNo.setEditable(false)
         const soldPartyName = this.getView().byId("input1")
@@ -205,6 +216,7 @@ sap.ui.define([
         const billingBlockAmountInput = this.getView().byId("box2")
         billingBlockAmountInput.setEnabled(true)
 
+        // if user
         }else if(getToken === "USER"){
 
         const orderNo = this.getView().byId("input0")
@@ -250,6 +262,7 @@ sap.ui.define([
         }
       },
 
+      // checking credit card on change
       onLiveUpdate: function(){
         const CCNumberInput = this.getView().byId("input14").getValue();
 
@@ -257,7 +270,9 @@ sap.ui.define([
         return valid;
       },
 
+      // update button handled
       handlePressCreate: function(){
+
         const salesOrderNo = parseInt(this.getView().byId("input0").getValue(), 10)
         const soldPartyName = this.getView().byId("input1").getValue()
         const soldPartyAdress1Input = this.getView().byId("input2").getValue()
@@ -319,13 +334,47 @@ sap.ui.define([
         .then(res=> res.json())
         .then((data)=> {
           console.log(data);
-          try{
-            MessageBox.alert(data.message)
-            if(data.message){
-              this.getOwnerComponent().getRouter().navTo("home")
-            }
-          }catch(err){
-            console.log(err.message);
+          const Res = data.message
+          console.log(Res);
+          const that = this;
+
+          if(data.message === "Sales Order updation failed"){
+            const dialog = new Dialog({
+              title: "Failed",
+              type: "Message",
+              content: new Text({
+                text: Res
+              }),
+              beginButton: new Button({
+                text: "OK",
+                press: function() {
+                  dialog.close();
+                }
+              }),
+              afterClose: function(){
+                dialog.destroy();
+              }
+            })
+            dialog.open()
+          }else{
+            const dialog = new Dialog({
+              title: "Success",
+              type: "Message",
+              content: new Text({
+                text: Res
+              }),
+              beginButton: new Button({
+                text: "OK",
+                press: function() {
+                  dialog.close();
+                  that.getOwnerComponent().getRouter().navTo("home")
+                }
+              }),
+              afterClose: function(){
+                dialog.destroy();
+              }
+            })
+            dialog.open()
           }
         })
       }
