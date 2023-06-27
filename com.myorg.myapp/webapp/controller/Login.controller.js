@@ -1,7 +1,10 @@
 sap.ui.define([
   "sap/ui/core/mvc/Controller",
-  "sap/m/MessageBox"
-], function(Controller, MessageBox) {
+  "sap/m/MessageBox",
+  "sap/m/Dialog",
+  "sap/m/Button",
+  "sap/m/Text"
+], function(Controller, MessageBox, Dialog, Button, Text) {
   "use strict";
 
   // A function to do regex Check for Login
@@ -50,9 +53,68 @@ sap.ui.define([
             .then(res=> res.json())
             .then((data)=> {
               console.log(data, 'login fetch res');
+              
               window.localStorage.setItem("token", data.token);
               window.localStorage.setItem("tokenData", data.role);
-              this.getOwnerComponent().getRouter().navTo("home");
+
+              const that = this;
+
+              if(data.message === "Invalid password"){
+                const dialog = new Dialog({
+                  title: "Failed",
+                  type: "Message",
+                  content: new Text({
+                    text: data.message
+                  }),
+                  beginButton: new Button({
+                    text: "OK",
+                    press: function(){
+                      dialog.close()
+                    }
+                  }),
+                  afterClose: function(){
+                    dialog.destroy();
+                  }
+                })
+                dialog.open()
+              }else if(data.message === "Invalid username"){
+                const dialog = new Dialog({
+                  title: "Failed",
+                  type: "Message",
+                  content: new Text({
+                    text: data.message
+                  }),
+                  beginButton: new Button({
+                    text: "OK",
+                    press: function(){
+                      dialog.close()
+                    }
+                  }),
+                  afterClose: function(){
+                    dialog.destroy();
+                  }
+                })
+                dialog.open()
+              }else if(data.message === "You have successfully logged in"){
+                const dialog = new Dialog({
+                  title: "Success",
+                  type: "Message",
+                  content: new Text({
+                    text: data.message
+                  }),
+                  beginButton: new Button({
+                    text: "OK",
+                    press: function(){
+                      dialog.close()
+                      that.getOwnerComponent().getRouter().navTo("home")
+                    }
+                  }),
+                  afterClose: function(){
+                    dialog.destroy();
+                  }
+                })
+                dialog.open()
+              }
             })
           }else if(regexResult.userNameCheck().Status === false && regexResult.passwordCheck().Status === false){
 
