@@ -1,10 +1,13 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.myorg.myapp.controller.Header">
 <Bar class="header" id="bar0">
     <contentRight>
-        <Button class="logoutBtn" xmlns="sap.m" press="logoutbtnHandle" text="Logout" id="button0" icon="sap-icon://log"/>
+        <Button xmlns="sap.m" class="logoutBtn" press="logoutbtnHandle" text="Logout" id="button0" icon="sap-icon://log"/>
     </contentRight>
 <contentMiddle>
-    <Link class="middlelink" xmlns="sap.m" text="SALES ORDERS" id="link0" press="handleTitle"/>
+    <Text xmlns="sap.m" class="middlelink" text="SALES ORDERS" id="link0"/>
 </contentMiddle>
+<contentLeft>
+    <Button press="handleTitle" xmlns="sap.m" text="HOME" id="button0_1687780650843" icon="sap-icon://home"/>
+</contentLeft>
 </Bar>
 </mvc:View>

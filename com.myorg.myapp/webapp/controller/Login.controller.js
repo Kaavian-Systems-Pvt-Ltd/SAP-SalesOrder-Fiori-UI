@@ -50,8 +50,9 @@ sap.ui.define([
             .then(res=> res.json())
             .then((data)=> {
               console.log(data, 'login fetch res');
+              MessageBox.alert("success")
               window.localStorage.setItem("token", data.token)
-              window.localStorage.setItem("tokenData", data);
+              window.localStorage.setItem("tokenData", data.role);
               this.getOwnerComponent().getRouter().navTo("home")
             })
           }else if(regexResult.userNameCheck().Status === false && regexResult.passwordCheck().Status === false){

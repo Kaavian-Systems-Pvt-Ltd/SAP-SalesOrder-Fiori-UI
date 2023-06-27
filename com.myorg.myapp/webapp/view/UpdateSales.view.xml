@@ -1,6 +1,6 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.myorg.myapp.controller.UpdateSales">
     <ScrollContainer id="scrollContainer" height="100%" width="100%" vertical="true" horizontal="false" focusable="true">
-        <!-- <mvc:XMLView viewName="com.myorg.myapp.view.Header"></mvc:XMLView> -->
+        <mvc:XMLView viewName="com.myorg.myapp.view.Header"></mvc:XMLView>
         <FlexBox alignItems="Center" justifyContent="Center" width="100%">
             <sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form1">
                 <sap.ui.layout.form:formContainers>
@@ -8,7 +8,7 @@
                         <sap.ui.layout.form:formElements>
                             <sap.ui.layout.form:FormElement label="Order Number" id="element0">
                                 <sap.ui.layout.form:fields>
-                                    <Input width="100%" id="input0"/>
+                                    <Input type="Number" width="100%" id="input0"/>
                                 </sap.ui.layout.form:fields>
                             </sap.ui.layout.form:FormElement>
                             <sap.ui.layout.form:FormElement label="Sold to Party Name" id="element1">
@@ -38,7 +38,7 @@
                             </sap.ui.layout.form:FormElement>
                             <sap.ui.layout.form:FormElement label="Sold to Party zip" id="element6">
                                 <sap.ui.layout.form:fields>
-                                    <Input width="100%" id="input6"/>
+                                    <Input type="Number" width="100%" id="input6"/>
                                 </sap.ui.layout.form:fields>
                             </sap.ui.layout.form:FormElement>
                             <sap.ui.layout.form:FormElement label="Ship to Party Name" id="element7">
@@ -79,7 +79,7 @@
                             </sap.ui.layout.form:FormElement>
                             <sap.ui.layout.form:FormElement label="Ship to Party zip" id="element12">
                                 <sap.ui.layout.form:fields>
-                                    <Input required="true" width="100%" id="input12"/>
+                                    <Input required="true" type="Number" width="100%" id="input12"/>
                                 </sap.ui.layout.form:fields>
                             </sap.ui.layout.form:FormElement>
                             <sap.ui.layout.form:FormElement label="CC Name" id="element13">
@@ -89,7 +89,7 @@
                             </sap.ui.layout.form:FormElement>
                             <sap.ui.layout.form:FormElement label="CC Number" id="element14">
                                 <sap.ui.layout.form:fields>
-                                    <Input liveChange="onLiveUpdate" required="true" width="100%" id="input14"/>
+                                    <Input liveChange="onLiveUpdate" type="Number" required="true" width="100%" id="input14"/>
                                 </sap.ui.layout.form:fields>
                             </sap.ui.layout.form:FormElement>
                             <sap.ui.layout.form:FormElement label="CC Month" id="element15">
@@ -99,22 +99,18 @@
                             </sap.ui.layout.form:FormElement>
                             <sap.ui.layout.form:FormElement label="CC Year" id="element16">
                                 <sap.ui.layout.form:fields>
-                                    <Input required="true" width="100%" id="input16"/>
+                                    <Input required="true" type="Number" width="100%" id="input16"/>
                                 </sap.ui.layout.form:fields>
                             </sap.ui.layout.form:FormElement>
                             <sap.ui.layout.form:FormElement label="CVV" id="element17">
                                 <sap.ui.layout.form:fields>
-                                    <Input width="100%" id="input17"/>
+                                    <Input type="Number" width="100%" id="input17"/>
                                 </sap.ui.layout.form:fields>
                             </sap.ui.layout.form:FormElement>
                             <sap.ui.layout.form:FormElement label="Sales Order Net Amount" id="element18">
                                 <sap.ui.layout.form:fields>
-                                    <Input width="100%" id="input18"/>
-                                </sap.ui.layout.form:fields>
-                            </sap.ui.layout.form:FormElement>
-                            <sap.ui.layout.form:FormElement label="billing Block Amount" id="element19">
-                                <sap.ui.layout.form:fields>
-                                    <Input width="100%" id="input19"/>
+                                    <Input type="Number" width="100%" id="input18"/>
+                                    <CheckBox xmlns="sap.m" text="Billing Block Amount" selected="true" id="box2"/>
                                 </sap.ui.layout.form:fields>
                             </sap.ui.layout.form:FormElement>
                         </sap.ui.layout.form:formElements>

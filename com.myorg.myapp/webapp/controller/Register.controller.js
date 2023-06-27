@@ -63,7 +63,7 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (BaseController
             .then(data => {
               console.log(data);
             });
-          this.getOwnerComponent().getRouter().navTo("Homepage");
+          this.getOwnerComponent().getRouter().navTo("home");
   
         } else {
           console.log(userName, userPassword, userRole);
