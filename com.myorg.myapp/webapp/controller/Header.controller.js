@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/Dialog",
-    "sap/m/Button"
-  ], function(Controller, Dialog, Button) {
+    "sap/m/Button",
+    "sap/m/Text"
+  ], function(Controller, Dialog, Button, Text) {
     "use strict";
     
     return Controller.extend("com.myorg.myapp.controller.Header", {
@@ -14,7 +15,7 @@ sap.ui.define([
           title: "Confirm",
           type: "Message",
           content: new Text({
-            Text: "Are You Sure ?"
+            text: "Are You Sure ?"
           }),
           beginButton: new Button({
             text: "OK",
