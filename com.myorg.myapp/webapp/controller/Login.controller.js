@@ -1,20 +1,20 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
-    "sap/m/MessageBox"
-  ], function(Controller, MessageBox) {
-    "use strict";
+  "sap/ui/core/mvc/Controller",
+  "sap/m/MessageBox"
+], function(Controller, MessageBox) {
+  "use strict";
 
-    // A function to do regex Check for Login
-    const LoginRegexCheck = (userName, password)=> {
+  // A function to do regex Check for Login
+  const LoginRegexCheck = (userName, password)=> {
 
-      // User Name Regex Check
-      const userNameCheck = ()=> {
-        if(/^[a-zA-Z]+$/.test(userName)){
-          return { 'Status' : true }
-        }else{
-          return { 'Status' : false }
-        }
+    // User Name Regex Check
+    const userNameCheck = ()=> {
+      if(/^[a-zA-Z]+$/.test(userName)){
+        return { 'Status' : true }
+      }else{
+        return { 'Status' : false }
       }
+    }
 
       // Password Regex Check
       const passwordCheck = ()=> {
@@ -25,20 +25,20 @@ sap.ui.define([
         }
       }
 
-      return { userNameCheck, passwordCheck }
-  }
-    
-    return Controller.extend("com.myorg.myapp.controller.Login", {
+    return { userNameCheck, passwordCheck }
+}
+  
+  return Controller.extend("com.myorg.myapp.controller.Login", {
 
-      // Login Button Handel
-      handelLoginPress: function(){
+    // Login Button Handel
+    handelLoginPress: function(){
 
-        try{
+      try{
 
-          const userName = this.getView().byId("input5").getValue()
-          const password = this.getView().byId("input6").getValue()
+        const userName = this.getView().byId("input5").getValue()
+        const password = this.getView().byId("input6").getValue()
 
-          const regexResult = LoginRegexCheck(userName, password);
+        const regexResult = LoginRegexCheck(userName, password);
 
           if( regexResult.userNameCheck().Status === true && regexResult.passwordCheck().Status === true  ){
             // this.getOwnerComponent().getRouter().navTo("home")
@@ -50,51 +50,49 @@ sap.ui.define([
             .then(res=> res.json())
             .then((data)=> {
               console.log(data, 'login fetch res');
-              MessageBox.alert("success")
-              window.localStorage.setItem("token", data.token)
+              window.localStorage.setItem("token", data.token);
               window.localStorage.setItem("tokenData", data.role);
-              this.getOwnerComponent().getRouter().navTo("home")
+              this.getOwnerComponent().getRouter().navTo("home");
             })
           }else if(regexResult.userNameCheck().Status === false && regexResult.passwordCheck().Status === false){
 
-            MessageBox.alert("Both user Name and Password is not Valid")
+          MessageBox.alert("Both user Name and Password is not Valid")
 
-          }else if(regexResult.userNameCheck().Status === true && regexResult.passwordCheck().Status === false){
+        }else if(regexResult.userNameCheck().Status === true && regexResult.passwordCheck().Status === false){
 
-            MessageBox.alert("Password is not Valid")
+          MessageBox.alert("Password is not Valid")
 
-          }else if(regexResult.userNameCheck().Status === false && regexResult.passwordCheck().Status === true){
+        }else if(regexResult.userNameCheck().Status === false && regexResult.passwordCheck().Status === true){
 
-            MessageBox.alert("User Name is not Valid")
-
-          }
-        }catch(err){
-
-          MessageBox.alert(err.message);
+          MessageBox.alert("User Name is not Valid")
 
         }
+      }catch(err){
 
-      },
+        MessageBox.alert(err.message);
 
-      // a function to make password visiable and hide
-      handelPasswordIconPress: function(){
-        const passwordType = this.getView().byId("input6");
-        const btn = this.getView().byId("passwordIconId");
+      }
 
-        if (passwordType.getType() === "Password" ) {
-          passwordType.setType("Text");
-          btn.setSrc("sap-icon://hide");
-        }else{
-          passwordType.setType("Password")
-          btn.setSrc("sap-icon://show");
-        }
+    },
+
+    // a function to make password visiable and hide
+    handelPasswordIconPress: function(){
+      const passwordType = this.getView().byId("input6");
+      const btn = this.getView().byId("passwordIconId");
+
+      if (passwordType.getType() === "Password" ) {
+        passwordType.setType("Text");
+        btn.setSrc("sap-icon://hide");
+      }else{
+        passwordType.setType("Password")
+        btn.setSrc("sap-icon://show");
+      }
 
       },
 
       NavToRegPage: function(){
-        this.getOwnerComponent().getRouter().navTo("Register")
+        this.getOwnerComponent().getRouter().navTo("userRegisterPage");
       }
 
-    });
   });
-  
+});

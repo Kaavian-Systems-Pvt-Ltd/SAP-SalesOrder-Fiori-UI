@@ -5,10 +5,6 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	core:require="{
-		formatter: 'com/myorg/myapp/model/formatter'
-	}">
+		formatter: 'com/myorg/myapp/model/formatter'}">
 
-	<!-- <core:View viewName="com.myorg.myapp.view.login" /> -->
-	<core:ExtensionPoint name="com.myorg.myapp.Login.view"  />
-
-</mvc:View>
+	</mvc:View>
