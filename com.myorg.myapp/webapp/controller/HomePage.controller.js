@@ -122,7 +122,7 @@ sap.ui.define([
     },
 
     salesCreate: function(){
-      this.getOwnerComponent().getRouter().navTo("createSales")
+      this.getOwnerComponent().getRouter().navTo("createSales");
     },
 
     handleFilter: function(){
