@@ -8,9 +8,24 @@ sap.ui.define([
   "use strict";
   
   return Controller.extend("com.myorg.myapp.controller.HomePage", {
-    
+
+     dateFormat : function(formatdate){
+      const month = formatdate.substring(5, 7);
+      const date = formatdate.substring(8, 10);
+      const year = formatdate.substring(0, 4);
+  
+      return month + '/' + date + '/' + year;
+    },    
 
     onInit: function(){
+
+      const dateFormat =(formatdate)=>{
+        const month = formatdate.substring(5, 7);
+        const date = formatdate.substring(8, 10);
+        const year = formatdate.substring(0, 4);
+    
+        return month + '/' + date + '/' + year;
+      }  
       
       const token = window.localStorage.getItem("token");
       const role =window.localStorage.getItem("tokenData");
@@ -43,7 +58,7 @@ sap.ui.define([
                 new Text({text: rowIndex.toString()}), 
                 new Text({ text: item.USER_ID}),
                 new Text({ text: item.SALES_ORDER_NO}),
-                new Text({ text: item.CREATED_DATE}),
+                new Text({ text: this.dateFormat(item.UPDATED_DATE)}),
                 new Text({ text: item.SOLD_TO_PARTY_NAME}),
                 new Text({ text: item.SHIP_TO_PARTY_NAME}),
                 new Text({ text: item.SALES_ORDER_NET_AMOUNT}),
@@ -83,7 +98,7 @@ sap.ui.define([
                 new Text({text: rowIndex.toString()}), 
                 new Text({ text: item.USER_ID}),
                 new Text({ text: item.SALES_ORDER_NO}),
-                new Text({ text: item.CREATED_DATE}),
+                new Text({ text: this.dateFormat(item.UPDATED_DATE)}),
                 new Text({ text: item.SOLD_TO_PARTY_NAME}),
                 new Text({ text: item.SHIP_TO_PARTY_NAME}),
                 new Text({ text: item.SALES_ORDER_NET_AMOUNT}),
@@ -142,7 +157,6 @@ sap.ui.define([
         console.log(data)
         const searchTableData = data.SearchData;
         console.log(searchTableData);
-
           if(searchTableData){
           const table = this.getView().byId("table0");
          
@@ -155,7 +169,7 @@ sap.ui.define([
                 new Text({text: rowIndex.toString()}), 
                 new Text({ text: item.USER_ID}),
                 new Text({ text: item.SALES_ORDER_NO}),
-                new Text({ text: item.CREATED_DATE}),
+                new Text({ text: this.dateFormat(item.UPDATED_DATE)}),
                 new Text({ text: item.SOLD_TO_PARTY_NAME}),
                 new Text({ text: item.SHIP_TO_PARTY_NAME}),
                 new Text({ text: item.SALES_ORDER_NET_AMOUNT}),
@@ -170,11 +184,8 @@ sap.ui.define([
           }else{
             
             const table = this.getView().byId("table0");
-
-            const row = new Text({text:""});
             
             table.removeAllItems();
-            table.addItem(row);
           }
           });
     },
@@ -188,7 +199,6 @@ sap.ui.define([
     onClear: function() {
       // or additional functionality when the X icon is clicked
       const table = this.getView().byId("table0");
-
       table.removeAllItems();
       this.onInit();
     },
