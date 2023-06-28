@@ -7,9 +7,6 @@ sap.ui.define([
   ], function(Controller, MessageBox, Dialog, Button, Text) {
     "use strict";
 
-    // token
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJSb2xlIjoiVVNFUiIsImlhdCI6MTY4NzM0NzEwNH0.-1-RbsdtWzVHbY9oo8yrBtl2elVPKejpEhSFbkxZFwc";
-
     // function to check Regex
     const CreateSalesRegexCheck = (
       soldtToPartyNameInput, soldToPartyAddressLine1Input, soldToPartyAddressLine2Input, soldToPartyCityInput,
@@ -216,11 +213,14 @@ sap.ui.define([
     }
 
     let valid = false;
+    let token;
     
     return Controller.extend("com.myorg.myapp.controller.CreateSales", {
 
       // renders when page first opens, using it to bind this to the CC files to make it accessable 
       onInit: function(){
+
+        token = window.localStorage.getItem("token")
 
         try{
 

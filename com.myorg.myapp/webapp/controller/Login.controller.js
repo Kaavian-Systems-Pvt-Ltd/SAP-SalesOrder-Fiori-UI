@@ -53,7 +53,7 @@ sap.ui.define([
             .then(res=> res.json())
             .then((data)=> {
               console.log(data, 'login fetch res');
-              
+
               window.localStorage.setItem("token", data.token);
               window.localStorage.setItem("tokenData", data.role);
 
@@ -153,7 +153,7 @@ sap.ui.define([
       },
 
       NavToRegPage: function(){
-        this.getOwnerComponent().getRouter().navTo("userRegisterPage");
+        this.getOwnerComponent().getRouter().navTo("Register");
       }
 
   });
