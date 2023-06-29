@@ -340,7 +340,7 @@ sap.ui.define([
             valid === true
             ){
               
-              fetch('https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/user/createSalesOrder', {
+              fetch('https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/user/createSalesOrder',{
                 method: 'POST',
                 body: JSON.stringify({
                   soldPartyName: soldtToPartyNameInput,
@@ -380,6 +380,25 @@ sap.ui.define([
                       text: 'Ok',
                       press: function() {
                         dialog.close();
+                         that.getView().byId("input0").setValue("");
+                         that.getView().byId("input1").setValue("");
+                         that.getView().byId("input2").setValue("");
+                         that.getView().byId("input3").setValue("");
+                         that.getView().byId("input4").setValue("");
+                         that.getView().byId("input5").setValue("");
+                         that.getView().byId("input6").setValue("");
+                         that.getView().byId("input7").setValue("");
+                         that.getView().byId("input8").setValue("");
+                         that.getView().byId("input9").setValue("");
+                         that.getView().byId("input10").setValue("");
+                         that.getView().byId("input11").setValue("");
+                         that.getView().byId("input12").setValue("");
+                         that.getView().byId("input13").setValue("");
+                         that.getView().byId("input14").setValue("");
+                         that.getView().byId("input15").setValue("");
+                         that.getView().byId("input16").setValue("");
+                         that.getView().byId("input17").setValue("");
+
                         that.getOwnerComponent().getRouter().navTo("home")
                       }
                     }),
@@ -470,6 +489,25 @@ sap.ui.define([
                       text: 'Ok',
                       press: function() {
                         dialog.close();
+                        that.getView().byId("input0").setValue("");
+                        that.getView().byId("input1").setValue("");
+                        that.getView().byId("input2").setValue("");
+                        that.getView().byId("input3").setValue("");
+                        that.getView().byId("input4").setValue("");
+                        that.getView().byId("input5").setValue("");
+                        that.getView().byId("input6").setValue("");
+                        that.getView().byId("input7").setValue("");
+                        that.getView().byId("input8").setValue("");
+                        that.getView().byId("input9").setValue("");
+                         that.getView().byId("input10").setValue("");
+                         that.getView().byId("input11").setValue("");
+                         that.getView().byId("input12").setValue("");
+                         that.getView().byId("input13").setValue("");
+                         that.getView().byId("input14").setValue("");
+                         that.getView().byId("input15").setValue("");
+                         that.getView().byId("input16").setValue("");
+                         that.getView().byId("input17").setValue("");
+                         
                         that.getOwnerComponent().getRouter().navTo("home")
                       }
                     }),

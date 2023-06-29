@@ -89,8 +89,26 @@ sap.ui.define([
     return Controller.extend("com.myorg.myapp.controller.UpdateSales", {
 
       // when opened this function is rendered first
-      onInit: async function(){
+      onInit: function(){
 
+        this.updateDataRender();
+
+        const oRouter = this.getOwnerComponent().getRouter();
+        console.log(oRouter);
+        oRouter.attachRouteMatched(this.onRouteMatched, this);
+        
+      },
+
+      onRouteMatched: function(e) {
+        const sRouteName = e.getParameter("name");
+      
+        if (sRouteName === "updateSales") {
+          this.updateDataRender();
+        }
+  
+      },
+
+      updateDataRender: async function(){
         // getting token and role from local storage
         const orderID = window.localStorage.getItem("orderID");
         const getToken = window.localStorage.getItem("tokenData");
@@ -176,43 +194,43 @@ sap.ui.define([
         if(getToken === "MANAGER"){
 
         const orderNo = this.getView().byId("input0")
-        orderNo.setEditable(false)
+        orderNo.setEditable(true)
         const soldPartyName = this.getView().byId("input1")
-        soldPartyName.setEditable(false)
+        soldPartyName.setEditable(true)
         const soldPartyAdress1 = this.getView().byId("input2")
-        soldPartyAdress1.setEditable(false)
+        soldPartyAdress1.setEditable(true)
         const soldPartyAdress2 = this.getView().byId("input3")
-        soldPartyAdress2.setEditable(false)
+        soldPartyAdress2.setEditable(true)
         const soldPartyCity = this.getView().byId("input4")
-        soldPartyCity.setEditable(false)
+        soldPartyCity.setEditable(true)
         const soldPartyState = this.getView().byId("input5")
-        soldPartyState.setEditable(false)
+        soldPartyState.setEditable(true)
         const soldPartyZip = this.getView().byId("input6")
-        soldPartyZip.setEditable(false)
+        soldPartyZip.setEditable(true)
         const shipPartyName = this.getView().byId("input7")
-        shipPartyName.setEditable(false)
+        shipPartyName.setEditable(true)
         const shipPartyAddress1 = this.getView().byId("input8")
-        shipPartyAddress1.setEditable(false)
+        shipPartyAddress1.setEditable(true)
         const shipPartyAddress2 = this.getView().byId("input9")
-        shipPartyAddress2.setEditable(false)
+        shipPartyAddress2.setEditable(true)
         const shipPartyCity = this.getView().byId("input10")
-        shipPartyCity.setEditable(false)
+        shipPartyCity.setEditable(true)
         const shipPartyState = this.getView().byId("input11")
-        shipPartyState.setEditable(false)
+        shipPartyState.setEditable(true)
         const shipPartyZip = this.getView().byId("input12")
-        shipPartyZip.setEditable(false)
+        shipPartyZip.setEditable(true)
         const ccName = this.getView().byId("input13")
-        ccName.setEditable(false)
+        ccName.setEditable(true)
         const ccNumber = this.getView().byId("input14")
-        ccNumber.setEditable(false)
+        ccNumber.setEditable(true)
         const ccMonth = this.getView().byId("input15")
-        ccMonth.setEditable(false)
+        ccMonth.setEditable(true)
         const ccYear = this.getView().byId("input16")
-        ccYear.setEditable(false)
+        ccYear.setEditable(true)
         const cvv = this.getView().byId("input17")
-        cvv.setEditable(false)
+        cvv.setEditable(true)
         const salesOrderNetAmountInput = this.getView().byId("input18")
-        salesOrderNetAmountInput.setEditable(false)
+        salesOrderNetAmountInput.setEditable(true)
         const billingBlockAmountInput = this.getView().byId("box2")
         billingBlockAmountInput.setEnabled(true)
 
