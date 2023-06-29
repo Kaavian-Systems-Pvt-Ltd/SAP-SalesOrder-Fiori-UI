@@ -6,14 +6,54 @@ sap.ui.define([
   "sap/ui/core/IconPool"
 ], function(Controller,Text,ColumnListItem, Icon, IconPool) {
   "use strict";
+
+  let token;
+  let role
   
   return Controller.extend("com.myorg.myapp.controller.HomePage", {
     
 
-    onInit: function(){
+    onInit: function() {
+      this.renderTable();
+      this.buttonControll();
+    
+      const oRouter = this.getOwnerComponent().getRouter();
+      console.log(oRouter);
+      oRouter.attachRouteMatched(this.onRouteMatched, this);
+    },
+    
+    onRouteMatched: function(e) {
+      const sRouteName = e.getParameter("name");
+    
+      if (sRouteName === "home") {
+        this.buttonControll();
+      }
+
+    },
+
+    buttonControll: function(){
+
+      this.renderTable()
+
+      console.log("lol");
+
+      if(role === "MANAGER"){
+        const ManagerButtonId = this.getView().byId("button0")
+        ManagerButtonId.setEnabled(false)
+      }else{
+        const UserButtonId = this.getView().byId("button0")
+        UserButtonId.setEnabled(true)
+      }
+    },
+
+    renderTable: function(){
+
+      console.log('came here');
       
-      const token = window.localStorage.getItem("token");
-      const role =window.localStorage.getItem("tokenData");
+      token = window.localStorage.getItem("token");
+      role =window.localStorage.getItem("tokenData");
+
+      console.log(role);
 
       if(role === "MANAGER"){
         const ManagerButtonId = this.getView().byId("button0")
@@ -62,17 +102,17 @@ sap.ui.define([
       }
       else if(role==="MANAGER"){
 
-      fetch('https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/manager/home',{
-      method: 'POST',
-      body: JSON.stringify({ token }),
-      headers: { 'content-type': 'application/json' }
-    })
-    .then(res => res.json())
-    .then((data)=> {
+        fetch('https://server-balanced-wallaby-dk.cfapps.us10-001.hana.ondemand.com/api/manager/home',{
+        method: 'POST',
+        body: JSON.stringify({ token }),
+        headers: { 'content-type': 'application/json' }
+      })
+      .then(res => res.json())
+      .then((data)=> {
 
-      console.log(data);
+        console.log(data);
       
-      const managerTableData = data.homeData;
+        const managerTableData = data.homeData;
 
           const table = this.getView().byId("table0");
 
@@ -99,8 +139,6 @@ sap.ui.define([
           console.error("Error fetching data:", error);
         });
       }
-        
-    
     },
 
     createEditIcon: function(orderId) {
