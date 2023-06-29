@@ -22,6 +22,7 @@ sap.ui.define([
             press: function() {
               dialog.close();
               window.localStorage.clear();
+              window.caches.delete()
               that.getOwnerComponent().getRouter().navTo("login")
             }
           }),
